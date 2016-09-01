@@ -125,16 +125,16 @@ angular
 
 (function() {
   function Service() {
-    var hat =   ["       *        ",
-                 "  __/_\\__      "];
-    var head =  ["   / x  x \\   ",
+    var hat =   ["      *        ",
+                 "   __/_\\__      "];
+    var head =  ["  / x  x \\   ",
                  "  |          |    ",
                  "  |   o     |    ",
-                 "   \\____/    "];
+                 "  \\____/    "];
     var arms =  ["  ___|___/    ",
-                 " /    ||       "];
+                 "/     ||       "];
     var torso = ["      ||       "];
-    var legs =  ["      /\\     ",
+    var legs =  ["     /\\     ",
                  " __/   \\__  ",
                  "8__]   [__8] "];
     var body = [hat, head, arms, torso, legs];

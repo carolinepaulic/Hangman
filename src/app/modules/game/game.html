@@ -9,6 +9,6 @@
      data-ng-repeat="letter in ctrl.answer track by $index">
 </div>
 
-<div class="alphabet-container">
+<div class="alphabet-container" data-ng-if="ctrl.numWrongGuesses < ctrl.numAllowedWrongGuesses">
   <span data-ng-repeat="letter in ctrl.alphabet" data-ng-click="ctrl.guessLetter(letter)" class="alphabet-letter" data-ng-class="{'guessed': letter.guessed}">{{letter.letter}}</span>
 </div>
