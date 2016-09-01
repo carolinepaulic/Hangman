@@ -1,6 +1,7 @@
 <h1>The Best Game of Hangman Ever!</h1>
 <h3>Wrong guesses so far: {{ctrl.numWrongGuesses}}</h3>
 <h3>Wrong guesses allowed: {{ctrl.numAllowedWrongGuesses}}</h3>
+<div class="hangman-figure-container"><div data-ng-repeat="figureLine in ctrl.figure">{{figureLine}}</div></div>
 
 <div data-letter-guess-box
      data-letter="{{letter.letter}}"

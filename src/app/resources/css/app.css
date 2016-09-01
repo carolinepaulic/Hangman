@@ -40,3 +40,13 @@ body {
   cursor: not-allowed;
   text-decoration: line-through;
 }
+
+.hangman-figure-container {
+  height: 20rem;
+  width: 12rem;
+  border-top: 5px solid black;
+  border-right: 5px solid black;
+  white-space: pre;
+  line-height: 1;
+  margin: 2rem;
+}

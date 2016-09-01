@@ -1,5 +1,5 @@
 (function() {
-  function Controller($state) {
+  function Controller($state, HangmanFigureService) {
     var ctrl = this;
 
     ctrl.guessLetter = function(letter) {
@@ -26,6 +26,7 @@
         }
         else {
           ctrl.numWrongGuesses++;
+          ctrl.figure = HangmanFigureService.getHangmanFigure(ctrl.numWrongGuesses);
           if (ctrl.numWrongGuesses >= ctrl.numAllowedWrongGuesses) {
             console.info("Game over!");
             // $state.go('welcome');
@@ -94,6 +95,7 @@
     init();
   }
 
-  angular.module('hangman.game-module')
-    .controller('GameController', ['$state', Controller]);
+  angular
+    .module('hangman.game-module')
+    .controller('GameController', ['$state', 'HangmanFigureService', Controller]);
 })();

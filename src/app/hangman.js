@@ -22,7 +22,7 @@ angular
   });
 
 (function() {
-  function Controller($state) {
+  function Controller($state, HangmanFigureService) {
     var ctrl = this;
 
     ctrl.guessLetter = function(letter) {
@@ -49,6 +49,7 @@ angular
         }
         else {
           ctrl.numWrongGuesses++;
+          ctrl.figure = HangmanFigureService.getHangmanFigure(ctrl.numWrongGuesses);
           if (ctrl.numWrongGuesses >= ctrl.numAllowedWrongGuesses) {
             console.info("Game over!");
             // $state.go('welcome');
@@ -117,8 +118,40 @@ angular
     init();
   }
 
-  angular.module('hangman.game-module')
-    .controller('GameController', ['$state', Controller]);
+  angular
+    .module('hangman.game-module')
+    .controller('GameController', ['$state', 'HangmanFigureService', Controller]);
+})();
+
+(function() {
+  function Service() {
+    var hat =   ["       *        ",
+                 "  __/_\\__      "];
+    var head =  ["   / x  x \\   ",
+                 "  |          |    ",
+                 "  |   o     |    ",
+                 "   \\____/    "];
+    var arms =  ["  ___|___/    ",
+                 " /    ||       "];
+    var torso = ["      ||       "];
+    var legs =  ["      /\\     ",
+                 " __/   \\__  ",
+                 "8__]   [__8] "];
+    var body = [hat, head, arms, torso, legs];
+    this.getHangmanFigure = function(numWrongGuesses) {
+      var figure = [];
+      for (var i = 0; i < numWrongGuesses && i < body.length; i++) {
+        for (var j = 0; j < body[i].length; j++) {
+          figure.push(body[i][j]);
+        }
+      }
+      return figure;
+    };
+  }
+
+  angular
+  .module('hangman.game-module')
+  .service('HangmanFigureService', [Service]);
 })();
 
 (function() {
