@@ -21,6 +21,7 @@
           });
           if (allLettersGuessed) {
             console.info("Winner!");
+            ctrl.userWon = true;
             // $state.go('welcome');
           }
         }
@@ -29,6 +30,7 @@
           ctrl.figure = HangmanFigureService.getHangmanFigure(ctrl.numWrongGuesses);
           if (ctrl.numWrongGuesses >= ctrl.numAllowedWrongGuesses) {
             console.info("Game over!");
+            ctrl.userWon = false;
             // $state.go('welcome');
           }
         }
@@ -43,6 +45,7 @@
     function startNewGame() {
       if (!ctrl.selectedLevel) {
         ctrl.numWrongGuesses = 0;
+        ctrl.userWon = null;
         //TODO: prompt user for difficulty level
         ctrl.selectedLevel = ctrl.difficultyLevels.easy;
         ctrl.showLetter = true;

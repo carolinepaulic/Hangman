@@ -9,6 +9,20 @@
      data-ng-repeat="letter in ctrl.answer track by $index">
 </div>
 
-<div class="alphabet-container" data-ng-if="ctrl.numWrongGuesses < ctrl.numAllowedWrongGuesses">
-  <span data-ng-repeat="letter in ctrl.alphabet" data-ng-click="ctrl.guessLetter(letter)" class="alphabet-letter" data-ng-class="{'guessed': letter.guessed}">{{letter.letter}}</span>
+<div class="row" style="margin-top: 2rem;">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="alphabet-container" data-ng-if="ctrl.userWon === null && ctrl.numWrongGuesses < ctrl.numAllowedWrongGuesses">
+      <span data-ng-repeat="letter in ctrl.alphabet" data-ng-click="ctrl.guessLetter(letter)" class="alphabet-letter" data-ng-class="{'guessed': letter.guessed}">{{letter.letter}}</span>
+    </div>
+    <div class="panel panel-success" data-ng-if="ctrl.userWon === true">
+      <div class="panel-heading">
+        Congrats!
+      </div>
+    </div>
+    <div class="panel panel-danger" data-ng-if="ctrl.userWon === false">
+      <div class="panel-heading">
+        Bummer!
+      </div>
+    </div>
+  </div>
 </div>

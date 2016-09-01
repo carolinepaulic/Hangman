@@ -1,15 +1,4 @@
 angular
-  .module('hangman.game-module', [])
-  .config(function($stateProvider) {
-    $stateProvider.state('game', {
-      url: '/play',
-      templateUrl: 'modules/game/game.html',
-      controller: 'GameController',
-      controllerAs: 'ctrl'
-    });
-  });
-
-angular
   .module('hangman.welcome-module', [])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
@@ -20,6 +9,26 @@ angular
       controllerAs: 'ctrl'
     });
   });
+
+angular
+  .module('hangman.game-module', [])
+  .config(function($stateProvider) {
+    $stateProvider.state('game', {
+      url: '/play',
+      templateUrl: 'modules/game/game.html',
+      controller: 'GameController',
+      controllerAs: 'ctrl'
+    });
+  });
+
+(function() {
+  function Controller() {
+    var ctrl = this;
+  }
+
+  angular.module('hangman.welcome-module')
+    .controller('WelcomeController', [Controller]);
+})();
 
 (function() {
   function Controller($state, HangmanFigureService) {
@@ -44,6 +53,7 @@ angular
           });
           if (allLettersGuessed) {
             console.info("Winner!");
+            ctrl.userWon = true;
             // $state.go('welcome');
           }
         }
@@ -52,6 +62,7 @@ angular
           ctrl.figure = HangmanFigureService.getHangmanFigure(ctrl.numWrongGuesses);
           if (ctrl.numWrongGuesses >= ctrl.numAllowedWrongGuesses) {
             console.info("Game over!");
+            ctrl.userWon = false;
             // $state.go('welcome');
           }
         }
@@ -66,6 +77,7 @@ angular
     function startNewGame() {
       if (!ctrl.selectedLevel) {
         ctrl.numWrongGuesses = 0;
+        ctrl.userWon = null;
         //TODO: prompt user for difficulty level
         ctrl.selectedLevel = ctrl.difficultyLevels.easy;
         ctrl.showLetter = true;
@@ -177,15 +189,6 @@ angular
   angular
   .module('hangman.game-module')
   .directive('letterGuessBox', Directive);
-})();
-
-(function() {
-  function Controller() {
-    var ctrl = this;
-  }
-
-  angular.module('hangman.welcome-module')
-    .controller('WelcomeController', [Controller]);
 })();
 
 angular.module('hangman', [
