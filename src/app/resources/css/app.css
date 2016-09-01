@@ -1,0 +1,42 @@
+body {
+}
+
+.letter-guess-box {
+  display: inline-block;
+  border-bottom: 1px solid black;
+  width: 4rem;
+  margin: .5rem;
+  padding: .5rem;
+  text-align: center;
+}
+
+.letter-guess {
+  vertical-align: middle;
+}
+
+.alphabet-container {
+  border: 1px solid black;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.alphabet-letter {
+  display: inline-block;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: .5rem 1rem;
+  margin: .5rem;
+  transition: background-color .3s;
+}
+
+.alphabet-letter:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.alphabet-letter.guessed {
+  color: #888;
+  background-color: #ddd;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
