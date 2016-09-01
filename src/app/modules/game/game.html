@@ -1,1 +1,13 @@
 <h1>gamey game</h1>
+<h3>Wrong guesses so far: {{ctrl.numWrongGuesses}}</h3>
+<h3>Wrong guesses allowed: {{ctrl.numAllowedWrongGuesses}}</h3>
+
+<span data-letter-guess-box
+     data-letter="{{letter.letter}}"
+     data-show-letter="letter.guessed"
+     data-ng-repeat="letter in ctrl.answer track by $index">
+</span>
+
+<div>
+  <span data-ng-repeat="letter in ctrl.alphabet" data-ng-click="ctrl.guessLetter(letter)">{{letter.letter}}</span>
+</div>
