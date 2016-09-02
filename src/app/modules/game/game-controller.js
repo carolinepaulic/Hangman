@@ -27,7 +27,7 @@
         }
         else {
           ctrl.numWrongGuesses++;
-          ctrl.figure = HangmanFigureService.getHangmanFigure(ctrl.numWrongGuesses);
+          ctrl.hangmanImagePaths = HangmanFigureService.getHangmanImagePaths(ctrl.numWrongGuesses);
           if (ctrl.numWrongGuesses >= ctrl.numAllowedWrongGuesses) {
             console.info("Game over!");
             ctrl.userWon = false;
@@ -76,7 +76,7 @@
 
     function init() {
       ctrl.selectedLevel = null;
-      ctrl.numAllowedWrongGuesses = 5;
+      ctrl.numAllowedWrongGuesses = HangmanFigureService.getMaxAllowedWrongGuesses();
       ctrl.difficultyLevels = {
         easy: {
           minLetters: 2,

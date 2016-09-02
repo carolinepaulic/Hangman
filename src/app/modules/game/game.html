@@ -1,6 +1,13 @@
-<h1>The Best Game of Hangman Ever!</h1>
-<h3>Remaining Guesses: {{ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses}}</h3>
-<div class="hangman-figure-container"><div data-ng-repeat="figureLine in ctrl.figure">{{figureLine}}</div></div>
+<div class="row header">
+  <h1 style="fdisplay: inline-block; float: left;">Hangman</h1>
+  <h3 style="display: inline-block; float: right;">Remaining Guesses: {{ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses}}</h3>
+</div>
+<div class="hangman-figure-container">
+  <img data-ng-repeat="imagePath in ctrl.hangmanImagePaths"
+       data-ng-src="{{imagePath}}"
+       class="zombie-part">
+</div>
+
 
 <div data-letter-guess-box
      data-letter="{{letter.letter}}"

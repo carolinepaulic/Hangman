@@ -1,26 +1,22 @@
 (function() {
   function Service() {
-    var hat =   ["      *        ",
-                 "   __/_\\__      "];
-    var head =  ["  / x  x \\   ",
-                 "  |          |    ",
-                 "  |   o     |    ",
-                 "  \\____/    "];
-    var arms =  ["  ___|___/    ",
-                 "/     ||       "];
-    var torso = ["      ||       "];
-    var legs =  ["     /\\     ",
-                 " __/   \\__  ",
-                 "8__]   [__8] "];
-    var body = [hat, head, arms, torso, legs];
-    this.getHangmanFigure = function(numWrongGuesses) {
-      var figure = [];
-      for (var i = 0; i < numWrongGuesses && i < body.length; i++) {
-        for (var j = 0; j < body[i].length; j++) {
-          figure.push(body[i][j]);
-        }
+    var imagesPath = "resources/images/";
+    var headPath = imagesPath + "zombie_head_transparent_background.png";
+    var torsoPath = imagesPath + "zombie_torso_transparent_background.png";
+    var legsPath = imagesPath + "zombie_pants_transparent_background.png";
+    var shoesPath = imagesPath + "zombie_shoes_transparent_background.png";
+    var bodyPartsPaths = [headPath, torsoPath, legsPath, shoesPath];
+
+    this.getHangmanImagePaths = function(numWrongGuesses) {
+      var hangmanPaths = [];
+      for (var i = 0; i < numWrongGuesses && i < bodyPartsPaths.length; i++) {
+        hangmanPaths.push(bodyPartsPaths[i]);
       }
-      return figure;
+      return hangmanPaths;
+    };
+
+    this.getMaxAllowedWrongGuesses = function() {
+      return bodyPartsPaths.length;
     };
   }
 
