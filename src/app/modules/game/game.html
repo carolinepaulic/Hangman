@@ -1,6 +1,6 @@
 <div class="row header">
-  <h1 style="fdisplay: inline-block; float: left;">Hangman</h1>
-  <h3 style="display: inline-block; float: right;">Remaining Guesses: {{ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses}}</h3>
+  <h3 style="fdisplay: inline-block; float: left;">Hangman</h3>
+
 </div>
 <div class="hangman-figure-container">
   <img data-ng-repeat="imagePath in ctrl.hangmanImagePaths"
@@ -19,8 +19,13 @@
 </div>
 
 <div class="row" style="margin-top: 2rem;">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-10 col-md-offset-1">
     <div class="alphabet-container" data-ng-if="ctrl.userWon === null && ctrl.numWrongGuesses < ctrl.numAllowedWrongGuesses">
+      <div class="row" style="margin-left: 0; margin-right: 0;">
+        <h3 style="color: #ddd; float: left; display: inline;">Take a guess...</h3>
+        <h3 style="display: inline; float: right; color: #ddd;">You have {{ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses}} incorrect guess<span data-ng-if="ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses !== 1">es</span> left.</h3>
+      </div>
+      <hr/>
       <span data-ng-repeat="letter in ctrl.alphabet" data-ng-click="ctrl.guessLetter(letter)" class="alphabet-letter" data-ng-class="{'guessed': letter.guessed}">{{letter.letter}}</span>
     </div>
     <div class="panel panel-success" data-ng-if="ctrl.userWon === true">

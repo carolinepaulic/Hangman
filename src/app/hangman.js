@@ -1,15 +1,4 @@
 angular
-  .module('hangman.game-module', [])
-  .config(function($stateProvider) {
-    $stateProvider.state('game', {
-      url: '/play',
-      templateUrl: 'modules/game/game.html',
-      controller: 'GameController',
-      controllerAs: 'ctrl'
-    });
-  });
-
-angular
   .module('hangman.welcome-module', [])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
@@ -20,6 +9,26 @@ angular
       controllerAs: 'ctrl'
     });
   });
+
+angular
+  .module('hangman.game-module', [])
+  .config(function($stateProvider) {
+    $stateProvider.state('game', {
+      url: '/play',
+      templateUrl: 'modules/game/game.html',
+      controller: 'GameController',
+      controllerAs: 'ctrl'
+    });
+  });
+
+(function() {
+  function Controller() {
+    var ctrl = this;
+  }
+
+  angular.module('hangman.welcome-module')
+    .controller('WelcomeController', [Controller]);
+})();
 
 (function() {
   function Controller($state, HangmanFigureService) {
@@ -176,15 +185,6 @@ angular
   angular
   .module('hangman.game-module')
   .directive('letterGuessBox', Directive);
-})();
-
-(function() {
-  function Controller() {
-    var ctrl = this;
-  }
-
-  angular.module('hangman.welcome-module')
-    .controller('WelcomeController', [Controller]);
 })();
 
 angular.module('hangman', [
