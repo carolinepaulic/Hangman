@@ -9,11 +9,13 @@
 </div>
 
 
-<div data-letter-guess-box
-     data-letter="{{letter.letter}}"
-     data-show-letter="letter.guessed"
-     style="display: inline-block;"
-     data-ng-repeat="letter in ctrl.answer track by $index">
+<div style="text-align: center;">
+  <div data-letter-guess-box
+       data-letter="{{letter.letter}}"
+       data-show-letter="letter.guessed"
+       style="display: inline-block;"
+       data-ng-repeat="letter in ctrl.answer track by $index">
+  </div>
 </div>
 
 <div class="row" style="margin-top: 2rem;">

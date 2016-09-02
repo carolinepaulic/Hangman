@@ -22,6 +22,11 @@ body {
   margin-bottom: 7rem;
 }
 
+.row.header {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .zombie-part {
   max-width: 12rem;
   display: block;
@@ -29,15 +34,23 @@ body {
 
 .letter-guess-box {
   display: inline-block;
-  border-bottom: 1px solid black;
-  width: 4rem;
-  margin: .5rem;
-  padding: .5rem;
+  border: 1px solid black;
+  border-bottom-width: 7px;
+  width: 5.5rem;
+  margin: .5rem 1rem;
+  padding: .5rem 1rem;
   text-align: center;
+  font-family: 'Cinzel', serif;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .letter-guess {
   vertical-align: middle;
+  font-size: 2em;
+}
+
+.letter-guess.guessed {
+  color: white;
 }
 
 .alphabet-container {
