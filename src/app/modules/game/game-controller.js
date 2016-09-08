@@ -1,5 +1,5 @@
 (function() {
-  function Controller($state, HangmanFigureService) {
+  function Controller($state, HangmanFigureService, WordService) {
     var ctrl = this;
 
     ctrl.guessLetter = function(letter) {
@@ -38,8 +38,20 @@
     };
 
     function getRandomWord() {
-      //TODO
-      return "Banana";
+      WordService.getRandomWord().then(function(result) {
+        if (result.data.word) {
+          var answerWord = result.data.word.toUpperCase();
+          ctrl.answer = [];
+          angular.forEach(answerWord, function(answerLetter) {
+            angular.forEach(ctrl.alphabet, function(alphabetLetter) {
+              if (alphabetLetter.letter == answerLetter) {
+                ctrl.answer.push(alphabetLetter);
+                return;
+              }
+            });
+          });
+        }
+      });
     }
 
     function startNewGame() {
@@ -59,19 +71,8 @@
             guessed: false
           };
         }
-
-        var answerWord = getRandomWord().toUpperCase();
-        ctrl.answer = [];
-        angular.forEach(answerWord, function(answerLetter) {
-          angular.forEach(ctrl.alphabet, function(alphabetLetter) {
-            if (alphabetLetter.letter == answerLetter) {
-              ctrl.answer.push(alphabetLetter);
-              return;
-            }
-          });
-        });
-
       }
+      getRandomWord();
     }
 
     function init() {
@@ -100,5 +101,5 @@
 
   angular
     .module('hangman.game-module')
-    .controller('GameController', ['$state', 'HangmanFigureService', Controller]);
+    .controller('GameController', ['$state', 'HangmanFigureService', 'WordService', Controller]);
 })();

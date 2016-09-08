@@ -6,7 +6,6 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     processhtml = require('gulp-processhtml'),
     del = require('del'),
-    webserver = require('gulp-webserver'),
     livereload = require('gulp-livereload'),
     sass = require('gulp-sass'),
     pkg = require('./package.json');
@@ -15,7 +14,7 @@ var appPath = 'src/app/',
     distPath = 'dist/';
 
 gulp.task('clean-src', function(callback) {
-    del([appPath + pkg.main, appPath + pkg.name + '.min.js'], callback);
+    del([appPath + pkg.name + '.js', appPath + pkg.name + '.min.js'], callback);
 });
 
 gulp.task('clean-dist', function(callback) {
@@ -24,12 +23,12 @@ gulp.task('clean-dist', function(callback) {
 
 gulp.task('concat', function() {
     return gulp.src([appPath + 'modules/**/*-module.js', appPath + 'modules/**/*.js', appPath + 'app.js'])
-        .pipe(concat(pkg.main))
+        .pipe(concat(pkg.name + '.js'))
         .pipe(gulp.dest(appPath));
 });
 
 gulp.task('js-minify-obfuscate', ['concat'], function() {
-    return gulp.src([appPath + pkg.main])
+    return gulp.src([appPath + pkg.name + '.js'])
         .pipe(rename({suffix: '.min'}))
         .pipe(ngannotate())
         .pipe(uglify())
@@ -70,16 +69,6 @@ gulp.task('copy-to-dist', ['process-index'], function() {
         .pipe(gulp.dest(distPath + resourcesPath + 'images/'));
 });
 
-gulp.task('webserver', function() {
-  gulp.src('./')
-      .pipe(webserver({
-        open: appPath,
-        livereload: {
-          enable: true
-        }
-      }));
-});
-
 gulp.task('watch', function() {
     gulp.watch([appPath + 'modules/**', resourcesPath, appPath + pkg.main, appPath + 'index.html'], ['dev']);
   //  gulp.watch([resourcesPath + 'scss/**'], ['sass']);
@@ -99,5 +88,3 @@ gulp.task('dev', function() {
 // gulp.task('prod', ['clean-src', 'clean-dist'], function() {
 //     gulp.start('js-minify-obfuscate', 'css-minify', 'copy-to-dist');
 // });
-
-gulp.task('server', ['watch', 'webserver']);

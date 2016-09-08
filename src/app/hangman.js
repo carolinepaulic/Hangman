@@ -1,4 +1,15 @@
 angular
+  .module('hangman.game-module', [])
+  .config(function($stateProvider) {
+    $stateProvider.state('game', {
+      url: '/play',
+      templateUrl: 'modules/game/game.html',
+      controller: 'GameController',
+      controllerAs: 'ctrl'
+    });
+  });
+
+angular
   .module('hangman.welcome-module', [])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
@@ -10,28 +21,8 @@ angular
     });
   });
 
-angular
-  .module('hangman.game-module', [])
-  .config(function($stateProvider) {
-    $stateProvider.state('game', {
-      url: '/play',
-      templateUrl: 'modules/game/game.html',
-      controller: 'GameController',
-      controllerAs: 'ctrl'
-    });
-  });
-
 (function() {
-  function Controller() {
-    var ctrl = this;
-  }
-
-  angular.module('hangman.welcome-module')
-    .controller('WelcomeController', [Controller]);
-})();
-
-(function() {
-  function Controller($state, HangmanFigureService) {
+  function Controller($state, HangmanFigureService, WordService) {
     var ctrl = this;
 
     ctrl.guessLetter = function(letter) {
@@ -70,8 +61,20 @@ angular
     };
 
     function getRandomWord() {
-      //TODO
-      return "Banana";
+      WordService.getRandomWord().then(function(result) {
+        if (result.data.word) {
+          var answerWord = result.data.word.toUpperCase();
+          ctrl.answer = [];
+          angular.forEach(answerWord, function(answerLetter) {
+            angular.forEach(ctrl.alphabet, function(alphabetLetter) {
+              if (alphabetLetter.letter == answerLetter) {
+                ctrl.answer.push(alphabetLetter);
+                return;
+              }
+            });
+          });
+        }
+      });
     }
 
     function startNewGame() {
@@ -91,19 +94,8 @@ angular
             guessed: false
           };
         }
-
-        var answerWord = getRandomWord().toUpperCase();
-        ctrl.answer = [];
-        angular.forEach(answerWord, function(answerLetter) {
-          angular.forEach(ctrl.alphabet, function(alphabetLetter) {
-            if (alphabetLetter.letter == answerLetter) {
-              ctrl.answer.push(alphabetLetter);
-              return;
-            }
-          });
-        });
-
       }
+      getRandomWord();
     }
 
     function init() {
@@ -132,7 +124,7 @@ angular
 
   angular
     .module('hangman.game-module')
-    .controller('GameController', ['$state', 'HangmanFigureService', Controller]);
+    .controller('GameController', ['$state', 'HangmanFigureService', 'WordService', Controller]);
 })();
 
 (function() {
@@ -185,6 +177,27 @@ angular
   angular
   .module('hangman.game-module')
   .directive('letterGuessBox', Directive);
+})();
+
+(function() {
+  function Service($http) {
+    this.getRandomWord = function() {
+      return $http.get('/randomWord');
+    };
+  }
+
+  angular
+    .module('hangman.game-module')
+    .service('WordService', ['$http', Service]);
+})();
+
+(function() {
+  function Controller() {
+    var ctrl = this;
+  }
+
+  angular.module('hangman.welcome-module')
+    .controller('WelcomeController', [Controller]);
 })();
 
 angular.module('hangman', [
