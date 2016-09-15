@@ -1,16 +1,4 @@
 angular
-  .module('hangman.welcome-module', [])
-  .config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/');
-    $stateProvider.state('welcome', {
-      url: '/',
-      templateUrl: 'modules/welcome/welcome.html',
-      controller: 'WelcomeController',
-      controllerAs: 'ctrl'
-    });
-  });
-
-angular
   .module('hangman.game-module', [])
   .config(function($stateProvider) {
     $stateProvider.state('game', {
@@ -21,14 +9,17 @@ angular
     });
   });
 
-(function() {
-  function Controller() {
-    var ctrl = this;
-  }
-
-  angular.module('hangman.welcome-module')
-    .controller('WelcomeController', [Controller]);
-})();
+angular
+  .module('hangman.welcome-module', [])
+  .config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/');
+    $stateProvider.state('welcome', {
+      url: '/',
+      templateUrl: 'modules/welcome/welcome.html',
+      controller: 'WelcomeController',
+      controllerAs: 'ctrl'
+    });
+  });
 
 (function() {
   function Controller($state, HangmanFigureService, WordService) {
@@ -198,6 +189,15 @@ angular
   angular
     .module('hangman.game-module')
     .service('WordService', ['$http', Service]);
+})();
+
+(function() {
+  function Controller() {
+    var ctrl = this;
+  }
+
+  angular.module('hangman.welcome-module')
+    .controller('WelcomeController', [Controller]);
 })();
 
 angular.module('hangman', [

@@ -1,3 +1,20 @@
+/* Typography */
+/* Colors */
+body {
+  font-family: 'Cinzel', serif;
+  font-size: 1.6em;
+  font-weight: normal;
+  line-height: 1.2;
+  color: #222; }
+  body h1 {
+    font-size: 3.2em; }
+  body h2 {
+    font-size: 2.72em; }
+  body h3 {
+    font-size: 2.4em; }
+  body h4 {
+    font-size: 1.92em; }
+
 html {
   background: url("../images/grass.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -15,7 +32,6 @@ body {
   background-color: rgba(0, 0, 0, 0.1);
   width: 100%;
   padding: 0 2rem;
-  font-family: 'Cinzel', serif;
   margin-bottom: 4rem; }
   .header.row {
     margin-left: 0;
@@ -32,7 +48,6 @@ body {
   margin: .5rem 1rem;
   padding: .5rem 1rem;
   text-align: center;
-  font-family: 'Cinzel', serif;
   background-color: rgba(0, 0, 0, 0.3); }
   .letter-guess-box.guessed {
     border: 1px solid #fff; }
@@ -47,7 +62,6 @@ body {
   padding: 1.5rem 3rem;
   margin-top: 2rem;
   text-align: center;
-  font-family: 'Cinzel', serif;
   background-color: rgba(0, 0, 0, 0.3);
   margin-bottom: 7rem; }
   .alphabet-container .alphabet-letter {
