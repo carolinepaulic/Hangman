@@ -1,5 +1,5 @@
 <div class="row header">
-  <h4 style="float: left;">Hangman</h4>
+  <h3 style="float: left;">Hangman</h3>
 
 </div>
 <div class="hangman-figure-container">
@@ -21,11 +21,10 @@
 <div class="row" style="margin-top: 2rem;">
   <div class="col-md-10 col-md-offset-1">
     <div class="alphabet-container" data-ng-if="ctrl.userWon === null && ctrl.numWrongGuesses < ctrl.numAllowedWrongGuesses">
-      <div class="row" style="margin-left: 0; margin-right: 0;">
-        <h4 style="color: #ddd; float: left; display: inline;">Take a guess...</h4>
-        <h4 style="display: inline; float: right; color: #ddd;">You have {{ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses}} incorrect guess<span data-ng-if="ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses !== 1">es</span> left.</h4>
+      <div class="row header-text" style="margin-left: 0; margin-right: 0;">
+        <h4 style="float: left; display: inline;">Take a guess...</h4>
+        <h4 style="display: inline; float: right;">You have {{ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses}} incorrect guess<span data-ng-if="ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses !== 1">es</span> left.</h4>
       </div>
-      <hr/>
       <span data-ng-repeat="letter in ctrl.alphabet" data-ng-click="ctrl.guessLetter(letter)" class="alphabet-letter" data-ng-class="{'guessed': letter.guessed}">{{letter.letter}}</span>
     </div>
     <div class="panel panel-success" data-ng-if="ctrl.userWon === true">

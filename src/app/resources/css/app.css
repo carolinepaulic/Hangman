@@ -1,19 +1,23 @@
 /* Typography */
 /* Colors */
 body {
-  font-family: 'Cinzel', serif;
+  font-family: "IM Fell English", serif;
   font-size: 1.6em;
   font-weight: normal;
   line-height: 1.2;
   color: #222; }
+  body h1, body h2, body h3, body h4, body h5, body h6 {
+    margin-top: 0; }
   body h1 {
-    font-size: 3.2em; }
+    font-size: 3.2em;
+    font-family: "Nothing You Could Do", cursive; }
   body h2 {
     font-size: 2.72em; }
   body h3 {
-    font-size: 2.4em; }
+    font-size: 2.4em;
+    font-family: "Nothing You Could Do", cursive; }
   body h4 {
-    font-size: 1.92em; }
+    font-size: 1.68em; }
 
 html {
   background: url("../images/grass_less_color.png") no-repeat center center fixed;
@@ -23,15 +27,16 @@ html {
   background-size: cover; }
 
 body {
-  background-color: transparent; }
+  background-color: rgba(0, 0, 0, 0.7); }
 
 .container {
   text-align: center; }
 
 .header {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #222;
+  color: #921d17;
   width: 100%;
-  padding: 0 2rem;
+  padding: 1rem 2rem 0;
   margin-bottom: 4rem; }
   .header.row {
     margin-left: 0;
@@ -43,57 +48,58 @@ body {
 
 .letter-guess-box {
   display: inline-block;
-  border-bottom: 4px solid #000;
+  border: 3px solid #480d0a;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.3);
   width: 5.5rem;
+  height: 5.5rem;
+  vertical-align: top;
   margin: .5rem 1rem;
-  padding: .5rem 1rem;
+  padding: 1rem 1.2rem;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.3); }
+  transition: border-color 1.5s; }
   .letter-guess-box.guessed {
-    border: 1px solid #fff; }
+    border-color: #921d17; }
   .letter-guess-box .letter-guess {
     vertical-align: middle;
-    font-size: 2em; }
+    font-size: 2em;
+    color: #222;
+    transition: color .5s; }
     .letter-guess-box .letter-guess.guessed {
-      color: #fff; }
+      color: #DDD; }
 
 .alphabet-container {
   border-radius: 1px;
-  padding: 1.5rem 3rem;
-  margin-top: 2rem;
+  padding: 3rem;
+  margin-top: 1.2rem;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.7);
   margin-bottom: 7rem; }
+  .alphabet-container .header-text {
+    color: #DDD;
+    border-bottom: 1px solid #480d0a;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem; }
   .alphabet-container .alphabet-letter {
     display: inline-block;
-    border: 1px solid #000;
-    border-radius: 1px;
-    padding-top: .8rem;
-    margin: .5rem;
-    transition: background-color .3s, font-weight .3s, border-color .3s;
-    width: 4rem;
-    height: 4rem;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.7);
     color: #DDD;
-    font-weight: 300;
-    font-size: 1.2em; }
+    font-size: 1.6em;
+    width: 3.5rem;
+    height: 4rem;
+    vertical-align: middle;
+    transition: .3s linear all; }
     .alphabet-container .alphabet-letter:hover {
-      color: #fff;
-      border-color: #222;
-      background-color: rgba(0, 0, 0, 0.3);
+      color: #921d17;
       cursor: pointer;
-      font-weight: 400; }
+      transform: scale(1.2) translatey(2px); }
     .alphabet-container .alphabet-letter.guessed {
-      color: #888;
-      background-color: rgba(0, 0, 0, 0.7);
-      cursor: not-allowed;
-      border-color: #888; }
+      color: #222;
+      cursor: not-allowed; }
 
 .hangman-figure-container {
   height: 26rem;
   width: 14rem;
-  border-top: 7px solid #000;
-  border-right: 9px solid #000;
+  border-top: 7px solid #222;
+  border-right: 9px solid #222;
   margin: auto;
   margin-bottom: 4rem; }

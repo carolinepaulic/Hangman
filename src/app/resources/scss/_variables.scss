@@ -3,14 +3,20 @@ $font-size-base: 1.6em;
 $font-size-h1: 2 * $font-size-base;
 $font-size-h2: 1.7 * $font-size-base;
 $font-size-h3: 1.5 * $font-size-base;
-$font-size-h4: 1.2 * $font-size-base;
+$font-size-h4: 1.05 * $font-size-base;
+$font-family-script: 'Nothing You Could Do', cursive;
+$font-family-serif: 'IM Fell English', serif;
 
 /* Colors */
 $color-white: #fff;
 $color-light-grey: #DDD;
 $color-medium-grey: #888;
+$color-medium-dark-grey: #555;
 $color-dark-grey: #222;
 $color-black: #000;
+
+$color-dark-red: #480d0a;
+$color-light-red: #921d17;
 
 $color-light-opaque: rgba(0, 0, 0, .1);
 $color-medium-opaque: rgba(0, 0, 0, .3);

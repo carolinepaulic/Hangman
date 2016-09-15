@@ -1,18 +1,24 @@
 body {
-  font-family: 'Cinzel', serif;
-  font-size: 1.6em;
+  font-family: $font-family-serif;
+  font-size: $font-size-base;
   font-weight: normal;
   line-height: 1.2;
   color: $color-dark-grey;
 
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+  }
+
   h1 {
     font-size: $font-size-h1;
+    font-family: $font-family-script;
   }
   h2 {
     font-size: $font-size-h2;
   }
   h3 {
     font-size: $font-size-h3;
+    font-family: $font-family-script;
   }
   h4 {
     font-size: $font-size-h4;

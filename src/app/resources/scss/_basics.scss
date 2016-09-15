@@ -7,7 +7,8 @@ html {
 }
 
 body {
-  background-color: transparent;
+  // background-color: transparent;
+  background-color: $color-dark-opaque;
 }
 
 .container {
@@ -15,9 +16,10 @@ body {
 }
 
 .header {
-  background-color: $color-light-opaque;
+  background-color: $color-dark-grey;
+  color: $color-light-red;
   width: 100%;
-  padding: 0 2rem;
+  padding: 1rem 2rem 0;
   margin-bottom: 4rem;
 
   &.row {
@@ -33,63 +35,66 @@ body {
 
 .letter-guess-box {
   display: inline-block;
-  border-bottom: 4px solid $color-black;
-  width: 5.5rem;
-  margin: .5rem 1rem;
-  padding: .5rem 1rem;
-  text-align: center;
+  border: 3px solid $color-dark-red;
+  border-radius: 2px;
   background-color: $color-medium-opaque;
+  width: 5.5rem;
+  height: 5.5rem;
+  vertical-align: top;
+  margin: .5rem 1rem;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  transition: border-color 1.5s;
 
   &.guessed {
-    border: 1px solid $color-white;
+    border-color: $color-light-red;
   }
 
   .letter-guess {
     vertical-align: middle;
     font-size: 2em;
+    color: $color-dark-grey;
+    transition: color .5s;
 
     &.guessed {
-      color: $color-white;
+      color: $color-light-grey;
     }
   }
 }
 
 .alphabet-container {
   border-radius: 1px;
-  padding: 1.5rem 3rem;
-  margin-top: 2rem;
+  padding: 3rem;
+  margin-top: 1.2rem;
   text-align: center;
-  background-color: $color-medium-opaque;
+  background-color: $color-dark-opaque;
   margin-bottom: 7rem;
+
+  .header-text {
+    color: $color-light-grey;
+    border-bottom: 1px solid $color-dark-red;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+  }
 
   .alphabet-letter {
     display: inline-block;
-    border: 1px solid $color-black;
-    border-radius: 1px;
-    padding-top: .8rem;
-    margin: .5rem;
-    transition: background-color .3s, font-weight .3s, border-color .3s;
-    width: 4rem;
-    height: 4rem;
-    text-align: center;
-    background-color: $color-dark-opaque;
     color: $color-light-grey;
-    font-weight: 300;
-    font-size: 1.2em;
+    font-size: $font-size-base;
+    width: 3.5rem;
+    height: 4rem;
+    vertical-align: middle;
+    transition: .3s linear all;
 
     &:hover {
-      color: $color-white;
-      border-color: $color-dark-grey;
-      background-color: $color-medium-opaque;
+      color: $color-light-red;
       cursor: pointer;
-      font-weight: 400;
+      transform: scale(1.2) translatey(2px);
     }
 
     &.guessed {
-      color: $color-medium-grey;
-      background-color: $color-dark-opaque;
+      color: $color-dark-grey;
       cursor: not-allowed;
-      border-color: $color-medium-grey;
     }
   }
 }
@@ -97,8 +102,8 @@ body {
 .hangman-figure-container {
   height: 26rem;
   width: 14rem;
-  border-top: 7px solid $color-black;
-  border-right: 9px solid $color-black;
+  border-top: 7px solid $color-dark-grey;
+  border-right: 9px solid $color-dark-grey;
   margin: auto;
   margin-bottom: 4rem;
 }
