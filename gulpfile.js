@@ -71,7 +71,7 @@ gulp.task('copy-to-dist', ['process-index'], function() {
 
 gulp.task('watch', function() {
     gulp.watch([appPath + 'modules/**', resourcesPath, appPath + pkg.main, appPath + 'index.html'], ['dev']);
-  //  gulp.watch([resourcesPath + 'scss/**'], ['sass']);
+    gulp.watch([resourcesPath + 'scss/**'], ['sass']);
     gulp.watch([appPath + pkg.main]).on('change', livereload.changed);
 });
 
@@ -81,7 +81,7 @@ gulp.task('watch', function() {
 //     gulp.start('concat');
 // });
 gulp.task('dev', function() {
-  gulp.start('concat');
+  gulp.start('concat', 'sass');
 });
 
 

@@ -3,34 +3,28 @@ html {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
-}
+  background-size: cover; }
 
 body {
-  background-color: transparent;
-}
+  background-color: transparent; }
 
 .container {
-  text-align: center;
-}
+  text-align: center; }
 
 .header {
-  background-color: rgba(0, 0, 0, .1);
+  background-color: rgba(0, 0, 0, 0.1);
   width: 100%;
   padding: 0 2rem;
   font-family: 'Cinzel', serif;
-  margin-bottom: 4rem;
-}
+  margin-bottom: 4rem; }
 
 .row.header {
   margin-left: 0;
-  margin-right: 0;
-}
+  margin-right: 0; }
 
 .zombie-part {
   max-width: 12rem;
-  display: block;
-}
+  display: block; }
 
 .letter-guess-box {
   display: inline-block;
@@ -40,21 +34,17 @@ body {
   padding: .5rem 1rem;
   text-align: center;
   font-family: 'Cinzel', serif;
-  background-color: rgba(0, 0, 0, 0.3);
-}
+  background-color: rgba(0, 0, 0, 0.3); }
 
 .letter-guess {
   vertical-align: middle;
-  font-size: 2em;
-}
+  font-size: 2em; }
 
 .letter-guess.guessed {
-  color: white;
-}
+  color: white; }
 
 .letter-guess-box.guessed {
-  border: 1px solid white;
-}
+  border: 1px solid white; }
 
 .alphabet-container {
   border-radius: 1px;
@@ -63,8 +53,7 @@ body {
   text-align: center;
   font-family: 'Cinzel', serif;
   background-color: rgba(0, 0, 0, 0.3);
-  margin-bottom: 7rem;
-}
+  margin-bottom: 7rem; }
 
 .alphabet-letter {
   display: inline-block;
@@ -79,23 +68,20 @@ body {
   background-color: rgba(0, 0, 0, 0.6);
   color: #ddd;
   font-weight: 300;
-  font-size: 1.2em;
-}
+  font-size: 1.2em; }
 
 .alphabet-letter:hover {
   color: white;
   border-color: #222;
   background-color: rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  font-weight: 400;
-}
+  font-weight: 400; }
 
 .alphabet-letter.guessed {
   color: #888;
   background-color: rgba(0, 0, 0, 0.7);
   cursor: not-allowed;
-  border-color: #888;
-}
+  border-color: #888; }
 
 .hangman-figure-container {
   height: 26rem;
@@ -103,5 +89,4 @@ body {
   border-top: 7px solid black;
   border-right: 9px solid black;
   margin: auto;
-  margin-bottom: 4rem;
-}
+  margin-bottom: 4rem; }
