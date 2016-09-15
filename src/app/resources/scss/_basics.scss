@@ -15,16 +15,16 @@ body {
 }
 
 .header {
-  background-color: rgba(0, 0, 0, .1);
+  background-color: $color-light-opaque;
   width: 100%;
   padding: 0 2rem;
   font-family: 'Cinzel', serif;
   margin-bottom: 4rem;
-}
 
-.row.header {
-  margin-left: 0;
-  margin-right: 0;
+  &.row {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .zombie-part {
@@ -34,26 +34,26 @@ body {
 
 .letter-guess-box {
   display: inline-block;
-  border-bottom: 4px solid black;
+  border-bottom: 4px solid $color-black;
   width: 5.5rem;
   margin: .5rem 1rem;
   padding: .5rem 1rem;
   text-align: center;
   font-family: 'Cinzel', serif;
-  background-color: rgba(0, 0, 0, 0.3);
-}
+  background-color: $color-medium-opaque;
 
-.letter-guess {
-  vertical-align: middle;
-  font-size: 2em;
-}
+  &.guessed {
+    border: 1px solid $color-white;
+  }
 
-.letter-guess.guessed {
-  color: white;
-}
+  .letter-guess {
+    vertical-align: middle;
+    font-size: 2em;
 
-.letter-guess-box.guessed {
-  border: 1px solid white;
+    &.guessed {
+      color: $color-white;
+    }
+  }
 }
 
 .alphabet-container {
@@ -62,46 +62,46 @@ body {
   margin-top: 2rem;
   text-align: center;
   font-family: 'Cinzel', serif;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: $color-medium-opaque;
   margin-bottom: 7rem;
-}
 
-.alphabet-letter {
-  display: inline-block;
-  border: 1px solid black;
-  border-radius: 1px;
-  padding-top: .8rem;
-  margin: .5rem;
-  transition: background-color .3s, font-weight .3s, border-color .3s;
-  width: 4rem;
-  height: 4rem;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #ddd;
-  font-weight: 300;
-  font-size: 1.2em;
-}
+  .alphabet-letter {
+    display: inline-block;
+    border: 1px solid $color-black;
+    border-radius: 1px;
+    padding-top: .8rem;
+    margin: .5rem;
+    transition: background-color .3s, font-weight .3s, border-color .3s;
+    width: 4rem;
+    height: 4rem;
+    text-align: center;
+    background-color: $color-dark-opaque;
+    color: $color-light-grey;
+    font-weight: 300;
+    font-size: 1.2em;
 
-.alphabet-letter:hover {
-  color: white;
-  border-color: #222;
-  background-color: rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  font-weight: 400;
-}
+    &:hover {
+      color: $color-white;
+      border-color: $color-dark-grey;
+      background-color: $color-medium-opaque;
+      cursor: pointer;
+      font-weight: 400;
+    }
 
-.alphabet-letter.guessed {
-  color: #888;
-  background-color: rgba(0, 0, 0, 0.7);
-  cursor: not-allowed;
-  border-color: #888;
+    &.guessed {
+      color: $color-medium-grey;
+      background-color: $color-dark-opaque;
+      cursor: not-allowed;
+      border-color: $color-medium-grey;
+    }
+  }
 }
 
 .hangman-figure-container {
   height: 26rem;
   width: 14rem;
-  border-top: 7px solid black;
-  border-right: 9px solid black;
+  border-top: 7px solid $color-black;
+  border-right: 9px solid $color-black;
   margin: auto;
   margin-bottom: 4rem;
 }

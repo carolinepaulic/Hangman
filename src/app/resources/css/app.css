@@ -17,10 +17,9 @@ body {
   padding: 0 2rem;
   font-family: 'Cinzel', serif;
   margin-bottom: 4rem; }
-
-.row.header {
-  margin-left: 0;
-  margin-right: 0; }
+  .header.row {
+    margin-left: 0;
+    margin-right: 0; }
 
 .zombie-part {
   max-width: 12rem;
@@ -35,16 +34,13 @@ body {
   text-align: center;
   font-family: 'Cinzel', serif;
   background-color: rgba(0, 0, 0, 0.3); }
-
-.letter-guess {
-  vertical-align: middle;
-  font-size: 2em; }
-
-.letter-guess.guessed {
-  color: white; }
-
-.letter-guess-box.guessed {
-  border: 1px solid white; }
+  .letter-guess-box.guessed {
+    border: 1px solid white; }
+  .letter-guess-box .letter-guess {
+    vertical-align: middle;
+    font-size: 2em; }
+    .letter-guess-box .letter-guess.guessed {
+      color: white; }
 
 .alphabet-container {
   border-radius: 1px;
@@ -54,34 +50,31 @@ body {
   font-family: 'Cinzel', serif;
   background-color: rgba(0, 0, 0, 0.3);
   margin-bottom: 7rem; }
-
-.alphabet-letter {
-  display: inline-block;
-  border: 1px solid black;
-  border-radius: 1px;
-  padding-top: .8rem;
-  margin: .5rem;
-  transition: background-color .3s, font-weight .3s, border-color .3s;
-  width: 4rem;
-  height: 4rem;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #ddd;
-  font-weight: 300;
-  font-size: 1.2em; }
-
-.alphabet-letter:hover {
-  color: white;
-  border-color: #222;
-  background-color: rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  font-weight: 400; }
-
-.alphabet-letter.guessed {
-  color: #888;
-  background-color: rgba(0, 0, 0, 0.7);
-  cursor: not-allowed;
-  border-color: #888; }
+  .alphabet-container .alphabet-letter {
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 1px;
+    padding-top: .8rem;
+    margin: .5rem;
+    transition: background-color .3s, font-weight .3s, border-color .3s;
+    width: 4rem;
+    height: 4rem;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ddd;
+    font-weight: 300;
+    font-size: 1.2em; }
+    .alphabet-container .alphabet-letter:hover {
+      color: white;
+      border-color: #222;
+      background-color: rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      font-weight: 400; }
+    .alphabet-container .alphabet-letter.guessed {
+      color: #888;
+      background-color: rgba(0, 0, 0, 0.7);
+      cursor: not-allowed;
+      border-color: #888; }
 
 .hangman-figure-container {
   height: 26rem;
