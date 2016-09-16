@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/carolinepaulic/Hangman/issues"
   },
-  "homepage": "https://github.com/carolinepaulic/Hangman#readme"
+  "homepage": "https://github.com/carolinepaulic/Hangman#readme",
+  "devDependencies": {
+    "connect-livereload": "^0.6.0",
+    "tiny-lr": "^0.2.1"
+  }
 }

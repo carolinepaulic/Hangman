@@ -59,7 +59,7 @@ body {
 
 .letter-guess-box {
   display: inline-block;
-  border: 3px solid #480d0a;
+  border: 3px solid #480D0A;
   border-radius: 2px;
   background-color: rgba(0, 0, 0, 0.3);
   width: 5.5rem;
@@ -88,7 +88,7 @@ body {
   margin-bottom: 7rem; }
   .alphabet-container .header-text {
     color: #DDD;
-    border-bottom: 1px solid #480d0a;
+    border-bottom: 1px solid #480D0A;
     padding-bottom: 1rem;
     margin-bottom: 2rem; }
   .alphabet-container .alphabet-letter {

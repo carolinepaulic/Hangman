@@ -6,7 +6,6 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     processhtml = require('gulp-processhtml'),
     del = require('del'),
-    livereload = require('gulp-livereload'),
     sass = require('gulp-sass'),
     pkg = require('./package.json');
 var appPath = 'src/app/',
@@ -69,22 +68,21 @@ gulp.task('copy-to-dist', ['process-index'], function() {
         .pipe(gulp.dest(distPath + resourcesPath + 'images/'));
 });
 
-gulp.task('watch', function() {
-    gulp.watch([appPath + 'modules/**', resourcesPath, appPath + pkg.main, appPath + 'index.html'], ['dev']);
-    gulp.watch([resourcesPath + 'scss/**'], ['sass']);
-    gulp.watch([appPath + pkg.main]).on('change', livereload.changed);
-});
-
-
-
 // gulp.task('dev', ['clean-src'], function() {
 //     gulp.start('concat');
 // });
+
 gulp.task('dev', function() {
   gulp.start('concat', 'sass');
 });
 
-
 // gulp.task('prod', ['clean-src', 'clean-dist'], function() {
 //     gulp.start('js-minify-obfuscate', 'css-minify', 'copy-to-dist');
 // });
+
+gulp.task('server', function() {
+  var server = require('./server');
+  gulp.watch([appPath + 'modules/**', resourcesPath, appPath + pkg.main, appPath + 'index.html'], ['dev']);
+  gulp.watch([resourcesPath + 'scss/**'], ['sass']);
+  gulp.watch([appPath + '*', resourcesPath + '**'], server.notifyLiveReload);
+});
