@@ -20,7 +20,6 @@
             }
           });
           if (allLettersGuessed) {
-            console.info("Winner!");
             ctrl.userWon = true;
             // $state.go('welcome');
           }
@@ -29,7 +28,6 @@
           ctrl.numWrongGuesses++;
           ctrl.hangmanImagePaths = HangmanFigureService.getHangmanImagePaths(ctrl.numWrongGuesses);
           if (ctrl.numWrongGuesses >= ctrl.numAllowedWrongGuesses) {
-            console.info("Game over!");
             ctrl.userWon = false;
             // $state.go('welcome');
           }
@@ -38,6 +36,7 @@
     };
 
     function getRandomWord() {
+      ctrl.loadingWord = true;
       WordService.getRandomWord().then(function(result) {
         if (result.data.word) {
           var answerWord = result.data.word.toUpperCase();
@@ -51,6 +50,7 @@
             });
           });
         }
+        ctrl.loadingWord = false;
       });
     }
 

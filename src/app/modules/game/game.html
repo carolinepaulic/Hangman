@@ -23,11 +23,13 @@
 
 <div style="text-align: center;">
   <div data-letter-guess-box
+       data-ng-if="!ctrl.loadingWord"
        data-letter="{{letter.letter}}"
        data-show-letter="letter.guessed"
        style="display: inline-block;"
        data-ng-repeat="letter in ctrl.answer track by $index">
   </div>
+  <h4 data-ng-if="ctrl.loadingWord">Finding a word...</h4>
 </div>
 
 <div class="row" style="margin-top: 2rem;">
