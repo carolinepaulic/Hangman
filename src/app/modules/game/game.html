@@ -1,7 +1,19 @@
 <div class="row hangman-header">
-  <h3>Hangman</h3>
-  <h4 class="byline">Created by <a href="http://www.carolinepaulic.com">Caroline Paulic</a></h4>
+  <h5>Hangman</h5>
+  <span class="byline">Created by <a href="http://www.carolinepaulic.com">Caroline Paulic</a></span>
 </div>
+
+
+<!-- <div class="row" style="margin-left: 20px;">
+  <h1>Header1</h1>
+  <h2>Header2</h2>
+  <h3>Header3</h3>
+  <h4>Header4</h4>
+  <h5>Header5</h5>
+  <h6>Header6</h6>
+  <p>Body</p>
+</div> -->
+
 <div class="hangman-figure-container">
   <img data-ng-repeat="imagePath in ctrl.hangmanImagePaths"
        data-ng-src="{{imagePath}}"
@@ -19,11 +31,11 @@
 </div>
 
 <div class="row" style="margin-top: 2rem;">
-  <div class="col-md-10 col-md-offset-1">
+  <div class="col-xs-8 col-xs-offset-2 col-md-10 col-md-offset-1">
     <div class="alphabet-container" data-ng-if="ctrl.userWon === null && ctrl.numWrongGuesses < ctrl.numAllowedWrongGuesses">
       <div class="row header-text" style="margin-left: 0; margin-right: 0;">
-        <h4 style="float: left; display: inline;">Take a guess...</h4>
-        <h4 style="display: inline; float: right;">You have {{ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses}} incorrect guess<span data-ng-if="ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses !== 1">es</span> left.</h4>
+        <span style="float: left;">Take a guess...</span>
+        <span style="float: right;">You have {{ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses}} incorrect guess<span data-ng-if="ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses !== 1">es</span> left.</span>
       </div>
       <span data-ng-repeat="letter in ctrl.alphabet" data-ng-click="ctrl.guessLetter(letter)" class="alphabet-letter" data-ng-class="{'guessed': letter.guessed}">{{letter.letter}}</span>
     </div>
@@ -40,6 +52,6 @@
   </div>
 </div>
 
-<div class="row" style="text-align: center; padding-bottom: .5rem;">
-  Hangman images were created using <a href="http://www.palette.jgefroh.com">Palette</a>.
+<div class="row" style="text-align: center;">
+  <h6>Hangman images were created using <a href="http://www.palette.jgefroh.com">Palette</a>.</h6>
 </div>
