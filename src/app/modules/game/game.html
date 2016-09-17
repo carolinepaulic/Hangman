@@ -31,24 +31,23 @@
 </div>
 
 <div class="row" style="margin-top: 2rem;">
-  <div class="col-xs-8 col-xs-offset-2 col-md-10 col-md-offset-1">
-    <div class="alphabet-container" data-ng-if="ctrl.userWon === null && ctrl.numWrongGuesses < ctrl.numAllowedWrongGuesses">
-      <div class="row header-text" style="margin-left: 0; margin-right: 0;">
+  <div class="alphabet-container col-xs-8 col-xs-offset-2 col-md-10 col-md-offset-1">
+    <div class="row header-text">
+      <div data-ng-if="ctrl.userWon === null">
         <span style="float: left;">Take a guess...</span>
         <span style="float: right;">You have {{ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses}} incorrect guess<span data-ng-if="ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses !== 1">es</span> left.</span>
       </div>
+      <div data-ng-if="ctrl.userWon === true">
+        Awesome! You guessed <span data-ng-repeat="letter in ctrl.answer track by $index" class="answer-text">{{letter.letter}}</span> correctly!
+      </div>
+      <div data-ng-if="ctrl.userWon === false">
+        Sorry, you're out of guesses! The answer was <span data-ng-repeat="letter in ctrl.answer track by $index" class="answer-text">{{letter.letter}}</span>
+      </div>
+    </div>
+    <div class="row" data-ng-if="ctrl.userWon === null">
       <span data-ng-repeat="letter in ctrl.alphabet" data-ng-click="ctrl.guessLetter(letter)" class="alphabet-letter" data-ng-class="{'guessed': letter.guessed}">{{letter.letter}}</span>
     </div>
-    <div class="panel panel-success" data-ng-if="ctrl.userWon === true">
-      <div class="panel-heading">
-        Congrats!
-      </div>
-    </div>
-    <div class="panel panel-danger" data-ng-if="ctrl.userWon === false">
-      <div class="panel-heading">
-        Bummer!
-      </div>
-    </div>
+    <button data-ng-if="ctrl.userWon !== null" class="btn cta" data-ng-click="ctrl.startNewGame()">Play Again</button>
   </div>
 </div>
 

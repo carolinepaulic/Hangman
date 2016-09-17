@@ -96,7 +96,11 @@ body {
     color: #DDD;
     border-bottom: 1px solid #480D0A;
     padding-bottom: 1em;
-    margin-bottom: 1em; }
+    margin: 0 0 1em 0; }
+  .alphabet-container .answer-text {
+    color: #921d17;
+    font-weight: bold;
+    text-transform: lowercase; }
   .alphabet-container .alphabet-letter {
     display: inline-block;
     color: #DDD;
@@ -121,3 +125,16 @@ body {
   .hangman-figure-container .zombie-part {
     max-width: 12rem;
     display: block; }
+
+button.btn {
+  border-radius: 1px; }
+  button.btn.cta {
+    font-family: "Nothing You Could Do", cursive;
+    font-size: 1.3em;
+    padding: .5em 1.5em;
+    background-color: #921d17;
+    color: #DDD;
+    transition: color .3s, background-color .3s; }
+    button.btn.cta:hover {
+      color: #fff;
+      background-color: #480D0A; }

@@ -54,26 +54,26 @@
       });
     }
 
-    function startNewGame() {
+    ctrl.startNewGame = function() {
+      ctrl.numWrongGuesses = 0;
+      ctrl.userWon = null;
+      ctrl.hangmanImagePaths = [];
       if (!ctrl.selectedLevel) {
-        ctrl.numWrongGuesses = 0;
-        ctrl.userWon = null;
         //TODO: prompt user for difficulty level
         ctrl.selectedLevel = ctrl.difficultyLevels.easy;
-        ctrl.showLetter = true;
-
-
-        var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-        ctrl.alphabet = [];
-        for (var i = 0; i < alphabet.length; i++) {
-          ctrl.alphabet[i] = {
-            letter: alphabet[i],
-            guessed: false
-          };
-        }
       }
+
+      var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+      ctrl.alphabet = [];
+      for (var i = 0; i < alphabet.length; i++) {
+        ctrl.alphabet[i] = {
+          letter: alphabet[i],
+          guessed: false
+        };
+      }
+
       getRandomWord();
-    }
+    };
 
     function init() {
       ctrl.selectedLevel = null;
@@ -93,7 +93,7 @@
         }
       };
 
-      startNewGame();
+      ctrl.startNewGame();
     }
 
     init();

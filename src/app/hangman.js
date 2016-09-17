@@ -1,16 +1,4 @@
 angular
-  .module('hangman.welcome-module', [])
-  .config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/');
-    $stateProvider.state('welcome', {
-      url: '/',
-      templateUrl: 'modules/welcome/welcome.html',
-      controller: 'WelcomeController',
-      controllerAs: 'ctrl'
-    });
-  });
-
-angular
   .module('hangman.game-module', [])
   .config(function($stateProvider) {
     $stateProvider.state('game', {
@@ -21,14 +9,17 @@ angular
     });
   });
 
-(function() {
-  function Controller() {
-    var ctrl = this;
-  }
-
-  angular.module('hangman.welcome-module')
-    .controller('WelcomeController', [Controller]);
-})();
+angular
+  .module('hangman.welcome-module', [])
+  .config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/');
+    $stateProvider.state('welcome', {
+      url: '/',
+      templateUrl: 'modules/welcome/welcome.html',
+      controller: 'WelcomeController',
+      controllerAs: 'ctrl'
+    });
+  });
 
 (function() {
   function Controller($state, HangmanFigureService, WordService) {
@@ -86,26 +77,26 @@ angular
       });
     }
 
-    function startNewGame() {
+    ctrl.startNewGame = function() {
+      ctrl.numWrongGuesses = 0;
+      ctrl.userWon = null;
+      ctrl.hangmanImagePaths = [];
       if (!ctrl.selectedLevel) {
-        ctrl.numWrongGuesses = 0;
-        ctrl.userWon = null;
         //TODO: prompt user for difficulty level
         ctrl.selectedLevel = ctrl.difficultyLevels.easy;
-        ctrl.showLetter = true;
-
-
-        var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-        ctrl.alphabet = [];
-        for (var i = 0; i < alphabet.length; i++) {
-          ctrl.alphabet[i] = {
-            letter: alphabet[i],
-            guessed: false
-          };
-        }
       }
+
+      var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+      ctrl.alphabet = [];
+      for (var i = 0; i < alphabet.length; i++) {
+        ctrl.alphabet[i] = {
+          letter: alphabet[i],
+          guessed: false
+        };
+      }
+
       getRandomWord();
-    }
+    };
 
     function init() {
       ctrl.selectedLevel = null;
@@ -125,7 +116,7 @@ angular
         }
       };
 
-      startNewGame();
+      ctrl.startNewGame();
     }
 
     init();
@@ -198,6 +189,15 @@ angular
   angular
     .module('hangman.game-module')
     .service('WordService', ['$http', Service]);
+})();
+
+(function() {
+  function Controller() {
+    var ctrl = this;
+  }
+
+  angular.module('hangman.welcome-module')
+    .controller('WelcomeController', [Controller]);
 })();
 
 angular.module('hangman', [
