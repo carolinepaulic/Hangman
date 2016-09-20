@@ -1,5 +1,4 @@
 html {
-  background: url("../images/grass_less_color.png") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -7,7 +6,6 @@ html {
 }
 
 body {
-  background-color: $color-dark-opaque;
   position: fixed;
   top: 0;
   left: 0;
@@ -15,17 +13,62 @@ body {
   bottom: 0;
 }
 
-.container {
+.letter-guess-box {
+  display: inline-block;
+  border-radius: 2px;
+  width: 5.5rem;
+  height: 5.5rem;
+  vertical-align: top;
+  margin: .5rem 1rem;
+  padding: 1rem 1.2rem;
   text-align: center;
+  transition: border-color 1.5s;
+
+  .letter-guess {
+    @extend h4;
+    vertical-align: middle;
+    transition: opacity .5s;
+  }
+}
+
+.alphabet-container {
+  border-radius: 1px;
+  padding: 1em;
+  margin-top: 1.2rem;
+  text-align: center;
+  margin-bottom: 2em;
+
+  .header-text {
+    padding-bottom: 1em;
+    margin: 0 0 1em 0;
+  }
+
+  .answer-text {
+    font-weight: bold;
+    text-transform: lowercase;
+  }
+
+  .alphabet-letter {
+    display: inline-block;
+    font-size: $font-size-base;
+    width: 3.5rem;
+    transition: .3s linear all;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.3) translatey(2px);
+    }
+
+    &.guessed {
+      cursor: not-allowed;
+    }
+  }
 }
 
 .hangman-header {
-  background-color: $color-dark-grey;
-  color: $color-light-red;
   width: 100%;
   padding: .5em 1em;
   margin-bottom: 2em;
-  font-family: $font-family-script;
 
   &.row {
     margin-left: 0;
@@ -40,86 +83,12 @@ body {
   .byline {
     float: right;
     margin-top: .2em;
-    color: $color-light-grey;
   }
 }
-
-.letter-guess-box {
-  display: inline-block;
-  border: 3px solid $color-dark-red;
-  border-radius: 2px;
-  background-color: $color-medium-opaque;
-  width: 5.5rem;
-  height: 5.5rem;
-  vertical-align: top;
-  margin: .5rem 1rem;
-  padding: 1rem 1.2rem;
-  text-align: center;
-  transition: border-color 1.5s;
-
-  &.guessed {
-    border-color: $color-light-red;
-  }
-
-  .letter-guess {
-    @extend h4;
-    vertical-align: middle;
-    color: $color-dark-grey;
-    transition: color .5s;
-
-    &.guessed {
-      color: $color-light-grey;
-    }
-  }
-}
-
-.alphabet-container {
-  border-radius: 1px;
-  padding: 1em;
-  margin-top: 1.2rem;
-  text-align: center;
-  background-color: $color-dark-opaque;
-  margin-bottom: 2em;
-
-  .header-text {
-    color: $color-light-grey;
-    border-bottom: 1px solid $color-dark-red;
-    padding-bottom: 1em;
-    margin: 0 0 1em 0;
-  }
-
-  .answer-text {
-    color: $color-light-red;
-    font-weight: bold;
-    text-transform: lowercase;
-  }
-
-  .alphabet-letter {
-    display: inline-block;
-    color: $color-light-grey;
-    font-size: $font-size-base;
-    width: 3.5rem;
-    transition: .3s linear all;
-
-    &:hover {
-      color: $color-light-red;
-      cursor: pointer;
-      transform: scale(1.3) translatey(2px);
-    }
-
-    &.guessed {
-      color: $color-dark-grey;
-      cursor: not-allowed;
-    }
-  }
-}
-
 
 .hangman-figure-container {
   height: 22rem;
   width: 14rem;
-  border-top: 7px solid $color-dark-grey;
-  border-right: 9px solid $color-dark-grey;
   margin: auto;
   margin-bottom: 4rem;
 

@@ -1,0 +1,87 @@
+@mixin theme-main-background($main-background-image, $main-background-color) {
+  background: $main-background-image;
+
+  body {
+    background-color: $main-background-color;
+  }
+}
+
+@mixin theme-nav-bar($background-color, $font-family, $title-color, $byline-color) {
+  background-color: $background-color;
+  color: $title-color;
+  font-family: $font-family;
+  .byline {
+    color: $byline-color;
+  }
+}
+
+@mixin theme-letter-guess-box($border-color, $background-color, $guessed-border-color, $letter-color) {
+  border: 3px solid $border-color;
+  background-color: $background-color;
+
+  &.guessed {
+    border-color: $guessed-border-color;
+  }
+
+  .letter-guess {
+    opacity: 0;
+    color: $letter-color;
+
+    &.guessed {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin theme-alphabet-container($background-color, $header-text-color, $header-text-border-color, $answer-text-color, $alphabet-letter-color, $alphabet-letter-hover-color, $alphabet-letter-guessed-color) {
+  background-color: $background-color;
+  .header-text {
+    color: $header-text-color;
+    border-bottom: 1px solid $header-text-border-color;
+  }
+
+  .answer-text {
+    color: $answer-text-color;
+  }
+
+  .alphabet-letter {
+    color: $alphabet-letter-color;
+
+    &:hover {
+      color: $alphabet-letter-hover-color;
+    }
+
+    &.guessed {
+      color: $alphabet-letter-guessed-color;
+    }
+  }
+}
+
+@mixin theme-hangman-container($border-color) {
+  border-top: 7px solid $border-color;
+  border-right: 9px solid $border-color;
+}
+
+.zombie {
+  &.main-html {
+    $background-image-url: url("../images/grass_less_color.png") no-repeat center center fixed;
+    $background-color: $color-dark-opaque;
+    @include theme-main-background($background-image-url, $background-color);
+  }
+
+  &.hangman-header {
+    @include theme-nav-bar($color-dark-grey, $font-family-script, $color-light-red, $color-light-grey);
+  }
+
+  &.letter-guess-box {
+    @include theme-letter-guess-box($color-dark-red, $color-medium-opaque, $color-light-red, $color-light-grey);
+  }
+
+  &.alphabet-container {
+    @include theme-alphabet-container($color-dark-opaque, $color-light-grey, $color-dark-red, $color-light-red, $color-light-grey, $color-light-red, $color-dark-grey);
+  }
+
+  &.hangman-figure-container {
+    @include theme-hangman-container($color-dark-grey);
+  }
+}

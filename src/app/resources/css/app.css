@@ -28,31 +28,101 @@ body {
       color: #921d17;
       text-decoration: none; }
 
+.zombie.main-html {
+  background: url("../images/grass_less_color.png") no-repeat center center fixed; }
+  .zombie.main-html body {
+    background-color: rgba(0, 0, 0, 0.7); }
+
+.zombie.hangman-header {
+  background-color: #222;
+  color: #921d17;
+  font-family: "Nothing You Could Do", cursive; }
+  .zombie.hangman-header .byline {
+    color: #DDD; }
+
+.zombie.letter-guess-box {
+  border: 3px solid #480D0A;
+  background-color: rgba(0, 0, 0, 0.3); }
+  .zombie.letter-guess-box.guessed {
+    border-color: #921d17; }
+  .zombie.letter-guess-box .letter-guess {
+    opacity: 0;
+    color: #DDD; }
+    .zombie.letter-guess-box .letter-guess.guessed {
+      opacity: 1; }
+
+.zombie.alphabet-container {
+  background-color: rgba(0, 0, 0, 0.7); }
+  .zombie.alphabet-container .header-text {
+    color: #DDD;
+    border-bottom: 1px solid #480D0A; }
+  .zombie.alphabet-container .answer-text {
+    color: #921d17; }
+  .zombie.alphabet-container .alphabet-letter {
+    color: #DDD; }
+    .zombie.alphabet-container .alphabet-letter:hover {
+      color: #921d17; }
+    .zombie.alphabet-container .alphabet-letter.guessed {
+      color: #222; }
+
+.zombie.hangman-figure-container {
+  border-top: 7px solid #222;
+  border-right: 9px solid #222; }
+
 html {
-  background: url("../images/grass_less_color.png") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover; }
 
 body {
-  background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0; }
 
-.container {
-  text-align: center; }
+.letter-guess-box {
+  display: inline-block;
+  border-radius: 2px;
+  width: 5.5rem;
+  height: 5.5rem;
+  vertical-align: top;
+  margin: .5rem 1rem;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  transition: border-color 1.5s; }
+  .letter-guess-box .letter-guess {
+    vertical-align: middle;
+    transition: opacity .5s; }
+
+.alphabet-container {
+  border-radius: 1px;
+  padding: 1em;
+  margin-top: 1.2rem;
+  text-align: center;
+  margin-bottom: 2em; }
+  .alphabet-container .header-text {
+    padding-bottom: 1em;
+    margin: 0 0 1em 0; }
+  .alphabet-container .answer-text {
+    font-weight: bold;
+    text-transform: lowercase; }
+  .alphabet-container .alphabet-letter {
+    display: inline-block;
+    font-size: 20px;
+    width: 3.5rem;
+    transition: .3s linear all; }
+    .alphabet-container .alphabet-letter:hover {
+      cursor: pointer;
+      transform: scale(1.3) translatey(2px); }
+    .alphabet-container .alphabet-letter.guessed {
+      cursor: not-allowed; }
 
 .hangman-header {
-  background-color: #222;
-  color: #921d17;
   width: 100%;
   padding: .5em 1em;
-  margin-bottom: 2em;
-  font-family: "Nothing You Could Do", cursive; }
+  margin-bottom: 2em; }
   .hangman-header.row {
     margin-left: 0;
     margin-right: 0; }
@@ -61,65 +131,11 @@ body {
     margin-bottom: 0; }
   .hangman-header .byline {
     float: right;
-    margin-top: .2em;
-    color: #DDD; }
-
-.letter-guess-box {
-  display: inline-block;
-  border: 3px solid #480D0A;
-  border-radius: 2px;
-  background-color: rgba(0, 0, 0, 0.3);
-  width: 5.5rem;
-  height: 5.5rem;
-  vertical-align: top;
-  margin: .5rem 1rem;
-  padding: 1rem 1.2rem;
-  text-align: center;
-  transition: border-color 1.5s; }
-  .letter-guess-box.guessed {
-    border-color: #921d17; }
-  .letter-guess-box .letter-guess {
-    vertical-align: middle;
-    color: #222;
-    transition: color .5s; }
-    .letter-guess-box .letter-guess.guessed {
-      color: #DDD; }
-
-.alphabet-container {
-  border-radius: 1px;
-  padding: 1em;
-  margin-top: 1.2rem;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  margin-bottom: 2em; }
-  .alphabet-container .header-text {
-    color: #DDD;
-    border-bottom: 1px solid #480D0A;
-    padding-bottom: 1em;
-    margin: 0 0 1em 0; }
-  .alphabet-container .answer-text {
-    color: #921d17;
-    font-weight: bold;
-    text-transform: lowercase; }
-  .alphabet-container .alphabet-letter {
-    display: inline-block;
-    color: #DDD;
-    font-size: 20px;
-    width: 3.5rem;
-    transition: .3s linear all; }
-    .alphabet-container .alphabet-letter:hover {
-      color: #921d17;
-      cursor: pointer;
-      transform: scale(1.3) translatey(2px); }
-    .alphabet-container .alphabet-letter.guessed {
-      color: #222;
-      cursor: not-allowed; }
+    margin-top: .2em; }
 
 .hangman-figure-container {
   height: 22rem;
   width: 14rem;
-  border-top: 7px solid #222;
-  border-right: 9px solid #222;
   margin: auto;
   margin-bottom: 4rem; }
   .hangman-figure-container .zombie-part {
