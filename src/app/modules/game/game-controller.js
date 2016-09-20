@@ -1,5 +1,5 @@
 (function() {
-  function Controller($state, HangmanFigureService, WordService) {
+  function Controller($state, HangmanFigureService, ThemeService, WordService) {
     var ctrl = this;
 
     ctrl.guessLetter = function(letter) {
@@ -75,6 +75,10 @@
       getRandomWord();
     };
 
+    ctrl.getTheme = function() {
+      return ThemeService.getSelectedTheme();
+    };
+
     function init() {
       ctrl.selectedLevel = null;
       ctrl.numAllowedWrongGuesses = HangmanFigureService.getMaxAllowedWrongGuesses();
@@ -101,5 +105,5 @@
 
   angular
     .module('hangman.game-module')
-    .controller('GameController', ['$state', 'HangmanFigureService', 'WordService', Controller]);
+    .controller('GameController', ['$state', 'HangmanFigureService', 'ThemeService', 'WordService', Controller]);
 })();

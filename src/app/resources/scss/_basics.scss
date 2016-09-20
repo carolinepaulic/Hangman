@@ -24,10 +24,9 @@ body {
   text-align: center;
   transition: border-color 1.5s;
 
-  .letter-guess {
+  .letter {
     @extend h4;
     vertical-align: middle;
-    transition: opacity .5s;
   }
 }
 

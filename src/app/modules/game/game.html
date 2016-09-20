@@ -1,4 +1,4 @@
-<div class="row hangman-header zombie">
+<div class="row hangman-header" data-ng-class="ctrl.getTheme()">
   <h5>Hangman</h5>
   <span class="byline">Created by <a href="http://www.carolinepaulic.com">Caroline Paulic</a></span>
 </div>
@@ -14,7 +14,7 @@
   <p>Body</p>
 </div> -->
 
-<div class="hangman-figure-container zombie">
+<div class="hangman-figure-container" data-ng-class="ctrl.getTheme()">
   <img data-ng-repeat="imagePath in ctrl.hangmanImagePaths"
        data-ng-src="{{imagePath}}"
        class="zombie-part">
@@ -33,7 +33,7 @@
 </div>
 
 <div class="row" style="margin-top: 2rem;">
-  <div class="alphabet-container col-xs-8 col-xs-offset-2 col-md-10 col-md-offset-1 zombie">
+  <div class="alphabet-container col-xs-8 col-xs-offset-2 col-md-10 col-md-offset-1" data-ng-class="ctrl.getTheme()">
     <div class="row header-text">
       <div data-ng-if="ctrl.userWon === null">
         <span style="float: left;">Take a guess...</span>

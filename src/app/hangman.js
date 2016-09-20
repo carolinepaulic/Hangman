@@ -1,4 +1,15 @@
 angular
+  .module('hangman.game-module', [])
+  .config(function($stateProvider) {
+    $stateProvider.state('game', {
+      url: '/play',
+      templateUrl: 'modules/game/game.html',
+      controller: 'GameController',
+      controllerAs: 'ctrl'
+    });
+  });
+
+angular
   .module('hangman.welcome-module', [])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
@@ -10,28 +21,8 @@ angular
     });
   });
 
-angular
-  .module('hangman.game-module', [])
-  .config(function($stateProvider) {
-    $stateProvider.state('game', {
-      url: '/play',
-      templateUrl: 'modules/game/game.html',
-      controller: 'GameController',
-      controllerAs: 'ctrl'
-    });
-  });
-
 (function() {
-  function Controller() {
-    var ctrl = this;
-  }
-
-  angular.module('hangman.welcome-module')
-    .controller('WelcomeController', [Controller]);
-})();
-
-(function() {
-  function Controller($state, HangmanFigureService, WordService) {
+  function Controller($state, HangmanFigureService, ThemeService, WordService) {
     var ctrl = this;
 
     ctrl.guessLetter = function(letter) {
@@ -107,6 +98,10 @@ angular
       getRandomWord();
     };
 
+    ctrl.getTheme = function() {
+      return ThemeService.getSelectedTheme();
+    };
+
     function init() {
       ctrl.selectedLevel = null;
       ctrl.numAllowedWrongGuesses = HangmanFigureService.getMaxAllowedWrongGuesses();
@@ -133,7 +128,7 @@ angular
 
   angular
     .module('hangman.game-module')
-    .controller('GameController', ['$state', 'HangmanFigureService', 'WordService', Controller]);
+    .controller('GameController', ['$state', 'HangmanFigureService', 'ThemeService', 'WordService', Controller]);
 })();
 
 (function() {
@@ -165,14 +160,18 @@ angular
 
 (function() {
   function Directive() {
-    function Controller() {
+    function Controller(ThemeService) {
       var ctrl = this;
+
+      ctrl.getTheme = function() {
+        return ThemeService.getSelectedTheme();
+      };
     }
 
     return {
       restrict: 'A',
       templateUrl: 'modules/game/letter-guess-box.html',
-      controller: [Controller],
+      controller: ['ThemeService', Controller],
       controllerAs: 'ctrl',
       bindToController: true,
       scope : {
@@ -189,6 +188,34 @@ angular
 })();
 
 (function() {
+  function Service() {
+    this.THEMES = {
+      zombie: "zombie"
+    };
+    this.DEFAULT_THEME = this.THEMES.zombie;
+
+    this.getSelectedTheme = function() {
+      return this.selectedTheme;
+    };
+
+    this.selectTheme = function(themeToSelect) {
+      if (themeToSelect) {
+        this.selectedTheme = themeToSelect;
+      }
+      else {
+        this.selectedTheme = this.DEFAULT_THEME;
+      }
+    };
+
+    this.selectTheme();
+  }
+
+  angular
+  .module('hangman.game-module')
+  .service('ThemeService', [Service]);
+})();
+
+(function() {
   function Service($http) {
     this.getRandomWord = function() {
       return $http.get('/randomWord');
@@ -200,8 +227,25 @@ angular
     .service('WordService', ['$http', Service]);
 })();
 
-angular.module('hangman', [
-  'ui.router',
-  'hangman.welcome-module',
-  'hangman.game-module'
-]);
+(function() {
+  function Controller() {
+    var ctrl = this;
+  }
+
+  angular.module('hangman.welcome-module')
+    .controller('WelcomeController', [Controller]);
+})();
+
+angular
+  .module('hangman', [
+    'ui.router',
+    'hangman.welcome-module',
+    'hangman.game-module'
+  ])
+  .controller('ApplicationController', ['ThemeService', function(ThemeService) {
+    var ctrl = this;
+
+    ctrl.getTheme = function() {
+      return ThemeService.getSelectedTheme();
+    };
+  }]);

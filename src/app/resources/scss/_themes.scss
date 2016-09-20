@@ -19,15 +19,16 @@
   border: 3px solid $border-color;
   background-color: $background-color;
 
-  &.guessed {
-    border-color: $guessed-border-color;
+  .letter {
+    color: $letter-color;
+    opacity: 0;
+    transition: opacity .5s;
   }
 
-  .letter-guess {
-    opacity: 0;
-    color: $letter-color;
+  &.guessed {
+    border-color: $guessed-border-color;
 
-    &.guessed {
+    .letter {
       opacity: 1;
     }
   }
