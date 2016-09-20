@@ -82,6 +82,7 @@ gulp.task('dev', function() {
 
 gulp.task('server', function() {
   var server = require('./server');
+  gulp.start('dev');
   gulp.watch([appPath + 'modules/**', resourcesPath, appPath + pkg.main, appPath + 'index.html'], ['dev']);
   gulp.watch([resourcesPath + 'scss/**'], ['sass']);
   gulp.watch([appPath + '*', resourcesPath + '**'], server.notifyLiveReload);
