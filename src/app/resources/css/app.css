@@ -47,6 +47,8 @@ html.zombie {
       html.zombie body button.cta:hover {
         color: #fff;
         background-color: #480D0A; }
+    html.zombie body .welcome-message-container {
+      border: 1px solid #888; }
     html.zombie body .hangman-header {
       background-color: #222; }
       html.zombie body .hangman-header .logo {
@@ -78,8 +80,21 @@ html.zombie {
     font-family: "IM Fell English", serif; }
     html.zombie body .hangman-header {
       font-family: "Nothing You Could Do", cursive; }
+    html.zombie body .fancy-font {
+      font-family: "Nothing You Could Do", cursive; }
     html.zombie body button.cta {
       font-family: "Nothing You Could Do", cursive; }
+
+.content {
+  text-align: center;
+  padding: 2em; }
+
+.welcome-message-container {
+  margin-top: 5em;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 3em 5em;
+  display: inline-block;
+  border-radius: 3px; }
 
 .letter-guess-box {
   display: inline-block;
@@ -119,8 +134,7 @@ html.zombie {
 
 .hangman-header {
   width: 100%;
-  padding: .5em 1em;
-  margin-bottom: 2em; }
+  padding: .5em 1em; }
   .hangman-header.row {
     margin-left: 0;
     margin-right: 0; }

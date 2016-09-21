@@ -23,6 +23,10 @@
       font-family: $fancy-font-family;
     }
 
+    .fancy-font {
+      font-family: $fancy-font-family;
+    }
+
     button.cta {
       font-family: $fancy-font-family;
     }
@@ -52,6 +56,10 @@
         color: $color-white;
         background-color: $dark-accent;
       }
+    }
+
+    .welcome-message-container {
+      border: 1px solid $anchor-accent-color;
     }
 
     .hangman-header {
@@ -104,7 +112,6 @@
           color: $nav-hangman-accent-color;
         }
       }
-
     }
   }
 }

@@ -2,57 +2,57 @@
   <h5 class="logo">Hangman</h5>
   <span class="byline">Created by <a href="http://www.carolinepaulic.com">Caroline Paulic</a></span>
 </div>
+<div class="content">
+  <!-- <div class="row" style="margin-left: 20px;">
+    <h1>Header1</h1>
+    <h2>Header2</h2>
+    <h3>Header3</h3>
+    <h4>Header4</h4>
+    <h5>Header5</h5>
+    <h6>Header6</h6>
+    <p>Body</p>
+  </div> -->
 
-
-<!-- <div class="row" style="margin-left: 20px;">
-  <h1>Header1</h1>
-  <h2>Header2</h2>
-  <h3>Header3</h3>
-  <h4>Header4</h4>
-  <h5>Header5</h5>
-  <h6>Header6</h6>
-  <p>Body</p>
-</div> -->
-
-<div class="hangman-figure-container">
-  <img data-ng-repeat="imagePath in ctrl.hangmanImagePaths"
-       data-ng-src="{{imagePath}}"
-       class="zombie-part">
-</div>
-
-
-<div style="text-align: center;">
-  <div data-letter-guess-box
-       data-ng-if="!ctrl.loadingWord"
-       data-letter="{{letter.letter}}"
-       data-show-letter="letter.guessed"
-       style="display: inline-block;"
-       data-ng-repeat="letter in ctrl.answer track by $index">
+  <div class="hangman-figure-container">
+    <img data-ng-repeat="imagePath in ctrl.hangmanImagePaths"
+         data-ng-src="{{imagePath}}"
+         class="zombie-part">
   </div>
-  <h4 data-ng-if="ctrl.loadingWord">Finding a word...</h4>
-</div>
 
-<div class="row" style="margin-top: 2rem;">
-  <div class="alphabet-container col-xs-8 col-xs-offset-2 col-md-10 col-md-offset-1">
-    <div class="row header-text">
-      <div data-ng-if="ctrl.userWon === null">
-        <span style="float: left;">Take a guess...</span>
-        <span style="float: right;">You have {{ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses}} incorrect guess<span data-ng-if="ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses !== 1">es</span> left.</span>
-      </div>
-      <div data-ng-if="ctrl.userWon === true">
-        Awesome! You guessed <span data-ng-repeat="letter in ctrl.answer track by $index" class="answer-text">{{letter.letter}}</span> correctly!
-      </div>
-      <div data-ng-if="ctrl.userWon === false">
-        Sorry, you're out of guesses! The answer was <span data-ng-repeat="letter in ctrl.answer track by $index" class="answer-text">{{letter.letter}}</span>
-      </div>
+
+  <div style="text-align: center;">
+    <div data-letter-guess-box
+         data-ng-if="!ctrl.loadingWord"
+         data-letter="{{letter.letter}}"
+         data-show-letter="letter.guessed"
+         style="display: inline-block;"
+         data-ng-repeat="letter in ctrl.answer track by $index">
     </div>
-    <div class="row" data-ng-if="ctrl.userWon === null">
-      <span data-ng-repeat="letter in ctrl.alphabet" data-ng-click="ctrl.guessLetter(letter)" class="alphabet-letter" data-ng-class="{'guessed': letter.guessed}">{{letter.letter}}</span>
-    </div>
-    <button data-ng-if="ctrl.userWon !== null" class="btn cta" data-ng-click="ctrl.startNewGame()">Play Again</button>
+    <h4 data-ng-if="ctrl.loadingWord">Finding a word...</h4>
   </div>
-</div>
 
-<div class="row" style="text-align: center;">
-  <h6>Hangman images were created using <a href="http://www.palette.jgefroh.com">Palette</a>.</h6>
+  <div class="row" style="margin-top: 2rem;">
+    <div class="alphabet-container col-xs-8 col-xs-offset-2 col-md-10 col-md-offset-1">
+      <div class="row header-text">
+        <div data-ng-if="ctrl.userWon === null">
+          <span style="float: left;">Take a guess...</span>
+          <span style="float: right;">You have {{ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses}} incorrect guess<span data-ng-if="ctrl.numAllowedWrongGuesses - ctrl.numWrongGuesses !== 1">es</span> left.</span>
+        </div>
+        <div data-ng-if="ctrl.userWon === true">
+          Awesome! You guessed <span data-ng-repeat="letter in ctrl.answer track by $index" class="answer-text">{{letter.letter}}</span> correctly!
+        </div>
+        <div data-ng-if="ctrl.userWon === false">
+          Sorry, you're out of guesses! The answer was <span data-ng-repeat="letter in ctrl.answer track by $index" class="answer-text">{{letter.letter}}</span>
+        </div>
+      </div>
+      <div class="row" data-ng-if="ctrl.userWon === null">
+        <span data-ng-repeat="letter in ctrl.alphabet" data-ng-click="ctrl.guessLetter(letter)" class="alphabet-letter" data-ng-class="{'guessed': letter.guessed}">{{letter.letter}}</span>
+      </div>
+      <button data-ng-if="ctrl.userWon !== null" class="btn cta" data-ng-click="ctrl.startNewGame()">Play Again</button>
+    </div>
+  </div>
+
+  <div class="row" style="text-align: center;">
+    <h6>Hangman images were created using <a href="http://www.palette.jgefroh.com">Palette</a>.</h6>
+  </div>
 </div>
