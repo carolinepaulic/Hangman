@@ -6,6 +6,24 @@
   }
 }
 
+@mixin theme-typography($body-font-family, $body-font-color) {
+  font-family: $body-font-family;
+  color: $body-font-color;
+}
+
+@mixin theme-anchor($text-color, $border-bottom, $hover-color) {
+  a {
+    color: $text-color;
+    border-bottom: $border-bottom;
+    transition: all .3s;
+
+    &:hover, &:active {
+      color: $hover-color;
+      text-decoration: none;
+    }
+  }
+}
+
 @mixin theme-nav-bar($background-color, $font-family, $title-color, $byline-color) {
   background-color: $background-color;
   color: $title-color;
@@ -68,21 +86,26 @@
     $background-image-url: url("../images/grass_less_color.png") no-repeat center center fixed;
     $background-color: $color-dark-opaque;
     @include theme-main-background($background-image-url, $background-color);
-  }
 
-  &.hangman-header {
-    @include theme-nav-bar($color-dark-grey, $font-family-script, $color-light-red, $color-light-grey);
-  }
+    body {
+      @include theme-typography($font-family-serif, $color-light-grey);
+      @include theme-anchor($color-light-grey, 1px solid $color-medium-grey, $color-light-red);
+    }
 
-  &.letter-guess-box {
-    @include theme-letter-guess-box($color-dark-red, $color-medium-opaque, $color-light-red, $color-light-grey);
-  }
+    .hangman-header {
+      @include theme-nav-bar($color-dark-grey, $font-family-script, $color-light-red, $color-light-grey);
+    }
 
-  &.alphabet-container {
-    @include theme-alphabet-container($color-dark-opaque, $color-light-grey, $color-dark-red, $color-light-red, $color-light-grey, $color-light-red, $color-dark-grey);
-  }
+    .letter-guess-box {
+      @include theme-letter-guess-box($color-dark-red, $color-medium-opaque, $color-light-red, $color-light-grey);
+    }
 
-  &.hangman-figure-container {
-    @include theme-hangman-container($color-dark-grey);
+    .alphabet-container {
+      @include theme-alphabet-container($color-dark-opaque, $color-light-grey, $color-dark-red, $color-light-red, $color-light-grey, $color-light-red, $color-dark-grey);
+    }
+
+    .hangman-figure-container {
+      @include theme-hangman-container($color-dark-grey);
+    }
   }
 }

@@ -1,9 +1,7 @@
 body {
-  font-family: $font-family-serif;
   font-size: $font-size-base;
   font-weight: normal;
   line-height: 1.2;
-  color: $color-light-grey;
 
   h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
@@ -31,16 +29,5 @@ body {
 
   h6 {
     font-size: .75em;
-  }
-
-  a {
-    color: $color-light-grey;
-    border-bottom: 1px solid $color-medium-grey;
-    transition: all .3s;
-
-    &:hover, &:active {
-      color: $color-light-red;
-      text-decoration: none;
-    }
   }
 }

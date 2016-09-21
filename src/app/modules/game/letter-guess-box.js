@@ -1,17 +1,13 @@
 (function() {
   function Directive() {
-    function Controller(ThemeService) {
+    function Controller() {
       var ctrl = this;
-
-      ctrl.getTheme = function() {
-        return ThemeService.getSelectedTheme();
-      };
     }
 
     return {
       restrict: 'A',
       templateUrl: 'modules/game/letter-guess-box.html',
-      controller: ['ThemeService', Controller],
+      controller: [Controller],
       controllerAs: 'ctrl',
       bindToController: true,
       scope : {

@@ -1,11 +1,9 @@
 /* Typography */
 /* Colors */
 body {
-  font-family: "IM Fell English", serif;
   font-size: 20px;
   font-weight: normal;
-  line-height: 1.2;
-  color: #DDD; }
+  line-height: 1.2; }
   body h1, body h2, body h3, body h4, body .letter-guess-box .letter, .letter-guess-box body .letter, body h5, body h6 {
     margin-top: 0; }
   body h1 {
@@ -20,55 +18,54 @@ body {
     font-size: 1.25em; }
   body h6 {
     font-size: .75em; }
-  body a {
-    color: #DDD;
-    border-bottom: 1px solid #888;
-    transition: all .3s; }
-    body a:hover, body a:active {
-      color: #921d17;
-      text-decoration: none; }
 
 .zombie.main-html {
   background: url("../images/grass_less_color.png") no-repeat center center fixed; }
   .zombie.main-html body {
     background-color: rgba(0, 0, 0, 0.7); }
-
-.zombie.hangman-header {
-  background-color: #222;
-  color: #921d17;
-  font-family: "Nothing You Could Do", cursive; }
-  .zombie.hangman-header .byline {
+  .zombie.main-html body {
+    font-family: "IM Fell English", serif;
     color: #DDD; }
-
-.zombie.letter-guess-box {
-  border: 3px solid #480D0A;
-  background-color: rgba(0, 0, 0, 0.3); }
-  .zombie.letter-guess-box .letter {
-    color: #DDD;
-    opacity: 0;
-    transition: opacity .5s; }
-  .zombie.letter-guess-box.guessed {
-    border-color: #921d17; }
-    .zombie.letter-guess-box.guessed .letter {
-      opacity: 1; }
-
-.zombie.alphabet-container {
-  background-color: rgba(0, 0, 0, 0.7); }
-  .zombie.alphabet-container .header-text {
-    color: #DDD;
-    border-bottom: 1px solid #480D0A; }
-  .zombie.alphabet-container .answer-text {
-    color: #921d17; }
-  .zombie.alphabet-container .alphabet-letter {
-    color: #DDD; }
-    .zombie.alphabet-container .alphabet-letter:hover {
+    .zombie.main-html body a {
+      color: #DDD;
+      border-bottom: 1px solid #888;
+      transition: all .3s; }
+      .zombie.main-html body a:hover, .zombie.main-html body a:active {
+        color: #921d17;
+        text-decoration: none; }
+  .zombie.main-html .hangman-header {
+    background-color: #222;
+    color: #921d17;
+    font-family: "Nothing You Could Do", cursive; }
+    .zombie.main-html .hangman-header .byline {
+      color: #DDD; }
+  .zombie.main-html .letter-guess-box {
+    border: 3px solid #480D0A;
+    background-color: rgba(0, 0, 0, 0.3); }
+    .zombie.main-html .letter-guess-box .letter {
+      color: #DDD;
+      opacity: 0;
+      transition: opacity .5s; }
+    .zombie.main-html .letter-guess-box.guessed {
+      border-color: #921d17; }
+      .zombie.main-html .letter-guess-box.guessed .letter {
+        opacity: 1; }
+  .zombie.main-html .alphabet-container {
+    background-color: rgba(0, 0, 0, 0.7); }
+    .zombie.main-html .alphabet-container .header-text {
+      color: #DDD;
+      border-bottom: 1px solid #480D0A; }
+    .zombie.main-html .alphabet-container .answer-text {
       color: #921d17; }
-    .zombie.alphabet-container .alphabet-letter.guessed {
-      color: #222; }
-
-.zombie.hangman-figure-container {
-  border-top: 7px solid #222;
-  border-right: 9px solid #222; }
+    .zombie.main-html .alphabet-container .alphabet-letter {
+      color: #DDD; }
+      .zombie.main-html .alphabet-container .alphabet-letter:hover {
+        color: #921d17; }
+      .zombie.main-html .alphabet-container .alphabet-letter.guessed {
+        color: #222; }
+  .zombie.main-html .hangman-figure-container {
+    border-top: 7px solid #222;
+    border-right: 9px solid #222; }
 
 html {
   -webkit-background-size: cover;
