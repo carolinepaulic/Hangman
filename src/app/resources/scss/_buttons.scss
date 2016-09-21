@@ -2,16 +2,8 @@ button.btn {
   border-radius: 1px;
 
   &.cta {
-    font-family: $font-family-script;
     font-size: 1.3em;
     padding: .5em 1.5em;
-    background-color: $color-light-red;
-    color: $color-light-grey;
     transition: color .3s, background-color .3s;
-
-    &:hover {
-      color: $color-white;
-      background-color: $color-dark-red;
-    }
   }
 }

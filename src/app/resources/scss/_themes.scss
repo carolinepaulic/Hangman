@@ -1,111 +1,116 @@
-@mixin theme-main-background($main-background-image, $main-background-color) {
-  background: $main-background-image;
+@mixin game-background($background-image-url, $background-overlay-color) {
+  background: url($background-image-url) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
   body {
-    background-color: $main-background-color;
+    background-color: $background-overlay-color;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 }
 
-@mixin theme-typography($body-font-family, $body-font-color) {
-  font-family: $body-font-family;
-  color: $body-font-color;
-}
+@mixin game-fonts($fancy-font-family, $body-font-family) {
+  body {
+    font-family: $body-font-family;
 
-@mixin theme-anchor($text-color, $border-bottom, $hover-color) {
-  a {
-    color: $text-color;
-    border-bottom: $border-bottom;
-    transition: all .3s;
+    .hangman-header {
+      font-family: $fancy-font-family;
+    }
 
-    &:hover, &:active {
-      color: $hover-color;
-      text-decoration: none;
+    button.cta {
+      font-family: $fancy-font-family;
     }
   }
 }
 
-@mixin theme-nav-bar($background-color, $font-family, $title-color, $byline-color) {
-  background-color: $background-color;
-  color: $title-color;
-  font-family: $font-family;
-  .byline {
-    color: $byline-color;
-  }
-}
+@mixin game-color-scheme($main-text-color, $anchor-accent-color, $nav-hangman-accent-color, $light-accent, $dark-accent) {
+  body {
+    color: $main-text-color;
 
-@mixin theme-letter-guess-box($border-color, $background-color, $guessed-border-color, $letter-color) {
-  border: 3px solid $border-color;
-  background-color: $background-color;
+    a {
+      color: $main-text-color;
+      border-bottom: 1px solid $anchor-accent-color;
+      transition: all .3s;
 
-  .letter {
-    color: $letter-color;
-    opacity: 0;
-    transition: opacity .5s;
-  }
-
-  &.guessed {
-    border-color: $guessed-border-color;
-
-    .letter {
-      opacity: 1;
-    }
-  }
-}
-
-@mixin theme-alphabet-container($background-color, $header-text-color, $header-text-border-color, $answer-text-color, $alphabet-letter-color, $alphabet-letter-hover-color, $alphabet-letter-guessed-color) {
-  background-color: $background-color;
-  .header-text {
-    color: $header-text-color;
-    border-bottom: 1px solid $header-text-border-color;
-  }
-
-  .answer-text {
-    color: $answer-text-color;
-  }
-
-  .alphabet-letter {
-    color: $alphabet-letter-color;
-
-    &:hover {
-      color: $alphabet-letter-hover-color;
+      &:hover, &:active {
+        color: $light-accent;
+        text-decoration: none;
+      }
     }
 
-    &.guessed {
-      color: $alphabet-letter-guessed-color;
-    }
-  }
-}
+    button.cta {
+      background-color: $light-accent;
+      color: $main-text-color;
 
-@mixin theme-hangman-container($border-color) {
-  border-top: 7px solid $border-color;
-  border-right: 9px solid $border-color;
-}
-
-.zombie {
-  &.main-html {
-    $background-image-url: url("../images/grass_less_color.png") no-repeat center center fixed;
-    $background-color: $color-dark-opaque;
-    @include theme-main-background($background-image-url, $background-color);
-
-    body {
-      @include theme-typography($font-family-serif, $color-light-grey);
-      @include theme-anchor($color-light-grey, 1px solid $color-medium-grey, $color-light-red);
+      &:hover {
+        color: $color-white;
+        background-color: $dark-accent;
+      }
     }
 
     .hangman-header {
-      @include theme-nav-bar($color-dark-grey, $font-family-script, $color-light-red, $color-light-grey);
-    }
+      background-color: $nav-hangman-accent-color;
 
-    .letter-guess-box {
-      @include theme-letter-guess-box($color-dark-red, $color-medium-opaque, $color-light-red, $color-light-grey);
-    }
-
-    .alphabet-container {
-      @include theme-alphabet-container($color-dark-opaque, $color-light-grey, $color-dark-red, $color-light-red, $color-light-grey, $color-light-red, $color-dark-grey);
+      .logo {
+        color: $light-accent;
+      }
     }
 
     .hangman-figure-container {
-      @include theme-hangman-container($color-dark-grey);
+      border-top: 7px solid $nav-hangman-accent-color;
+      border-right: 9px solid $nav-hangman-accent-color;
+    }
+
+    .letter-guess-box {
+      border: 3px solid $dark-accent;
+      background-color: $color-medium-opaque;
+
+      .letter {
+        opacity: 0;
+        transition: opacity .5s;
+      }
+
+      &.guessed {
+        border-color: $light-accent;
+
+        .letter {
+          opacity: 1;
+        }
+      }
+    }
+
+    .alphabet-container {
+      background-color: $color-dark-opaque;
+      .header-text {
+        border-bottom: 1px solid $dark-accent;
+      }
+
+      .answer-text {
+        color: $light-accent;
+      }
+
+      .alphabet-letter {
+        &:hover {
+          color: $light-accent;
+        }
+
+        &.guessed {
+          color: $nav-hangman-accent-color;
+        }
+      }
+
     }
   }
+}
+
+html.zombie {
+  @include game-background("../images/grass_less_color.png", $color-dark-opaque);
+  @include game-color-scheme($color-light-grey, $color-medium-grey, $color-dark-grey, $color-light-red, $color-dark-red);
+  @include game-fonts($font-family-script, $font-family-serif);
 }
