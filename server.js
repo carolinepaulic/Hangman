@@ -29,7 +29,7 @@ function startExpress() {
   app.use(express.static(EXPRESS_ROOT + '/src/app/'));
   app.use('/bower_components',  express.static(EXPRESS_ROOT + '/bower_components'));
   app.listen(EXPRESS_PORT);
-  console.log("App listening on port 8080");
+  console.log("App listening on port " + EXPRESS_PORT);
 }
 
 function startLiveReload() {
