@@ -7,9 +7,12 @@ var tinylr,
   LIVERELOAD_PORT = 35729;
 
 app.get('/randomWord', function(req, res) {
-  request('http://randomword.setgetgo.com/get.php', function(error, response, body) {
+  request('http://dictionary.jgefroh.com/word', function(error, response, body) {
     if (!error && response.statusCode == 200) {
-      res.json({word: body});
+      data = JSON.parse(body);
+      res.json({word: data.word});
+    } else {
+      res.json({word: 'effervescence'});
     }
   });
 });
@@ -38,6 +41,7 @@ function startLiveReload() {
   console.log("Live reload listening on port " + LIVERELOAD_PORT);
 }
 
+//To start, run "node server"
 startExpress();
 startLiveReload();
 module.exports = app;
