@@ -3,12 +3,11 @@ var tinylr,
   express = require('express'),
   app = express(),
   EXPRESS_PORT = 8000,
-  EXPRESS_ROOT = __dirname,
-  LIVERELOAD_PORT = 35729;
+  EXPRESS_ROOT = __dirname;
 
 app.get('/randomWord', function(req, res) {
   request('http://dictionary.jgefroh.com/word', function(error, response, body) {
-    if (!error && response.statusCode == 200) {
+    if (!error && response.statusCode === 200) {
       data = JSON.parse(body);
       res.json({word: data.word});
     } else {
@@ -26,22 +25,21 @@ app.notifyLiveReload = function(event) {
   });
 };
 
-
 function startExpress() {
-  app.use(require('connect-livereload')());
-  app.use(express.static(EXPRESS_ROOT + '/src/app/'));
-  app.use('/bower_components',  express.static(EXPRESS_ROOT + '/bower_components'));
-  app.listen(EXPRESS_PORT);
-  console.log("App listening on port " + EXPRESS_PORT);
-}
+  var rootDir = EXPRESS_ROOT;
+  var isProd = process.argv.slice(2)[0] === 'prod';
+  if (isProd) {
+    rootDir += '/dist/';
+  } else {
+    rootDir += '/src/app/';
+    app.use('/node_modules',  express.static(EXPRESS_ROOT + '/node_modules'));
+  }
 
-function startLiveReload() {
-  tinylr = require('tiny-lr')();
-  tinylr.listen(LIVERELOAD_PORT);
-  console.log("Live reload listening on port " + LIVERELOAD_PORT);
+  app.use(express.static(rootDir));
+  app.listen(EXPRESS_PORT);
+  console.log('App listening on port ' + EXPRESS_PORT + (isProd ? ' (Prod)' : ''));
 }
 
 //To start, run "node server"
 startExpress();
-startLiveReload();
 module.exports = app;

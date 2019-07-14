@@ -2,13 +2,22 @@
 <html data-ng-app="hangman" data-ng-controller="ApplicationController as ctrl" data-ng-class="ctrl.getTheme()">
   <head lang="en">
       <meta charset="UTF-8">
-      <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script> -->
-      <script src="../../bower_components/angular/angular.js"></script>
-      <script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <!--build:js resources/js/angular/angular.min.js -->
+      <script src="../../node_modules/angular/angular.js"></script>
+      <!-- /build -->
+      <!-- build:js resources/js/angular-ui-router/release/angular-ui-router.min.js -->
+      <script src="../../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+      <!-- /build -->
+      <!-- build:js hangman.min.js -->
       <script src="hangman.js"></script>
+      <!-- /build -->
 
-      <link type="text/css" rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
+      <!-- build:css resources/css/bootstrap.min.css -->
+      <link type="text/css" rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+      <!-- /build -->
+      <!-- build:css resources/css/app.min.css -->
       <link type="text/css" rel="stylesheet" href="resources/css/app.css">
+      <!-- /build -->
       <link href="https://fonts.googleapis.com/css?family=IM+Fell+English|Nothing+You+Could+Do" rel="stylesheet">
   </head>
   <body>
