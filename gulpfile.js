@@ -30,7 +30,7 @@ gulp.task('js-concat', function(done) {
   done();
 });
 
-gulp.task('js-minify-obfuscate', gulp.series('js-concat', function(done) {
+gulp.task('js-minify-obfuscate', gulp.series(function(done) {
   gulp.src([appPath + pkg.name + '.js'])
     .pipe(rename({suffix: '.min'}))
     .pipe(ngannotate())
@@ -86,6 +86,7 @@ gulp.task('dev',
 
 gulp.task('prod',
   gulp.series(
+    'dev',
     'clean:dist',
     gulp.parallel('js-minify-obfuscate', 'css-minify', 'process-index'),
     'copy-to-dist'
