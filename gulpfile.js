@@ -80,7 +80,8 @@ gulp.task('copy-to-dist', function(done) {
 gulp.task('dev',
   gulp.series(
     'clean:src',
-    gulp.parallel('js-concat', 'sass-compile')
+    'js-concat',
+    'sass-compile'
   )
 );
 
@@ -88,7 +89,9 @@ gulp.task('prod',
   gulp.series(
     'dev',
     'clean:dist',
-    gulp.parallel('js-minify-obfuscate', 'css-minify', 'process-index'),
+    'js-minify-obfuscate',
+    'css-minify',
+    'process-index',
     'copy-to-dist'
   )
 );
