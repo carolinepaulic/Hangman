@@ -117,7 +117,7 @@
 }
 
 html.zombie {
-  @include game-background("../images/grass_less_color.png", $color-dark-opaque);
+  @include game-background("../images/grass_less_color_min.jpg", $color-dark-opaque);
   @include game-color-scheme($color-light-grey, $color-medium-grey, $color-dark-grey, $color-light-red, $color-dark-red);
   @include game-fonts($font-family-script, $font-family-serif);
 }
